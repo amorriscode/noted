@@ -1,20 +1,67 @@
 <template>
   <div>
-    <div class="message">Value is: {{ count }}</div>
-    <a href="#" @click.prevent="increment">Increment</a>
+    <input v-model="note" placeholder="Add Note">
+    <button @click="addNote">Add Note</button>
+
+    <div v-for="note in notes" v-on:dblclick="editNote(note)">
+      <span v-if="editingNote['.key'] === note['.key']">
+        <input v-model="editingNote.content"/>
+        <button @click="updateNote(note)">Save</button>
+      </span>
+
+      <span v-else>
+        {{note.content}}
+        <button @click="deleteNote(note)">X</button>
+      </span>
+
+    </div>
   </div>
 </template>
 
 <script>
+import Firebase from 'firebase';
+
+  // Setup Firebase
+  const config = {
+    apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
+    authDomain: "noted-b5ad0.firebaseapp.com",
+    databaseURL: "https://noted-b5ad0.firebaseio.com",
+    messagingSenderId: "398915689559"
+  };
+
+  const firebaseApp = Firebase.initializeApp(config);
+  const db = firebaseApp.database();
+  const notesRef = db.ref('notes');
+
   export default {
     data () {
       return {
-        count: 0
+        note: '',
+        editingNote: ''
       }
     },
+    firebase: {
+      notes: notesRef
+    },
     methods: {
-      increment () {
-        this.count ++;
+      addNote() {
+        // Push note into database
+        notesRef.push({
+          content: this.note
+        })
+      },
+      deleteNote(note) {
+        // Remove note from firebase
+        notesRef.child(note['.key']).remove();
+      },
+      editNote(note) {
+        // Push selected note into state
+        this.editingNote = note;
+      },
+      updateNote() {
+        // Update note in DB then clear the state
+        notesRef.child(this.editingNote['.key']).update({content: this.editingNote.content});
+        this.editingNote = '';
       }
     }
   }
