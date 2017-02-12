@@ -13,3 +13,7 @@ _In previous projects I had used a [webpack template](https://github.com/vuejs-t
 2. Article was out of date so [followed the fixes that someone else had found](https://gist.github.com/mjhanninen/d9cb707c6419588f36b93a936470aeae)
 
 3. Changed `webpack.config.js` file to use `vue-loader` instead of `vue` to load Vue files
+
+4. Implemented Firebase using the firebase-tools
+* Run using `firebase serve`
+* Deploy using `firebase deploy`
