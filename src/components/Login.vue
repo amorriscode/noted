@@ -36,6 +36,9 @@
 
         // Set the user in the store... (enhance this later)
         this.$store.commit('setUser', firebaseApp.firebase.auth().currentUser);
+
+        // Head to the notes page
+        this.$router.push('notes');
       }
     }
   }
