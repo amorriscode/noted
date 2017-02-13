@@ -42,12 +42,20 @@
     firebase: {
       notes: notesRef
     },
+    computed: {
+      uid() {
+        return this.$store.getters.uid
+      }
+    },
     methods: {
       addNote() {
-        // Push note into database
-        notesRef.push({
+        const newNote = {
           content: this.note
-        })
+        };
+        newNote[this.uid] = true;
+
+        // Push note into database
+        notesRef.push(newNote);
       },
       deleteNote(note) {
         // Remove note from firebase

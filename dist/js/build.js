@@ -12959,14 +12959,25 @@ exports.default = {
   },
 
   firebase: {
-    notes: notesRef
+    notes: undefined.myNotes
+  },
+  computed: {
+    uid: function uid() {
+      return this.$store.getters.uid;
+    },
+    myNotes: function myNotes() {
+      return _firebaseApp2.default.db.ref('notes');
+    }
   },
   methods: {
     addNote: function addNote() {
-      // Push note into database
-      notesRef.push({
+      var newNote = {
         content: this.note
-      });
+      };
+      newNote[this.uid] = true;
+
+      // Push note into database
+      notesRef.push(newNote);
     },
     deleteNote: function deleteNote(note) {
       // Remove note from firebase
@@ -13999,9 +14010,13 @@ var store = new _vuex2.default.Store({
   state: {
     user: null
   },
+  getters: {
+    uid: function uid(state) {
+      return state.user.uid;
+    }
+  },
   mutations: {
     setUser: function setUser(state, payload) {
-      console.log(state, payload);
       state.user = payload;
     }
   }

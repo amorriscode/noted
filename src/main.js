@@ -2,25 +2,13 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueFire from 'vuefire';
-import Vuex from 'vuex'
 import App from './App.vue';
 
 Vue.use(VueFire);
 Vue.use(VueRouter);
-Vue.use(Vuex)
 
-// Setup store
-const store = new Vuex.Store({
-  state: {
-    user: null,
-  },
-  mutations: {
-    setUser (state, payload) {
-      console.log(state,payload);
-      state.user = payload;
-    }
-  }
-})
+// Import store
+import store from './store';
 
 // Setup routes
 import Login from './components/Login.vue';
