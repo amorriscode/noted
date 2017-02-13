@@ -41,6 +41,9 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (store.state.user) return next();
 
+  // Allow users to signup
+  if (to.path === '/signup') return next();
+
   // Don't change route if it's already set to /login
   if (to.path !== '/login') {
     next('/login');
