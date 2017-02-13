@@ -12867,7 +12867,14 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-// <template>
+
+var _firebaseApp = __webpack_require__(4);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //   <div>
 //     <input v-model="note" placeholder="Add Note">
 //     <button @click="addNote">Add Note</button>
@@ -12894,8 +12901,37 @@ exports.default = {
       note: '',
       editingNote: ''
     };
+  },
+
+  firebase: {
+    notes: notesRef
+  },
+  methods: {
+    addNote: function addNote() {
+      // Push note into database
+      notesRef.push({
+        content: this.note
+      });
+    },
+    deleteNote: function deleteNote(note) {
+      // Remove note from firebase
+      notesRef.child(note['.key']).remove();
+    },
+    editNote: function editNote(note) {
+      // Push selected note into state
+      this.editingNote = note;
+    },
+    updateNote: function updateNote() {
+      // Update note in DB then clear the state
+      notesRef.child(this.editingNote['.key']).update({ content: this.editingNote.content });
+      this.editingNote = '';
+    }
   }
 };
+// </script>
+//
+// <style>
+// </style>
 
 /***/ }),
 /* 17 */
@@ -13863,6 +13899,7 @@ var router = new _vueRouter2.default({
 router.beforeEach(function (to, from, next) {
   if (store.state.user) return next();
 
+  // Don't change route if it's already set to /login
   if (to.path !== '/login') {
     next('/login');
   } else {
