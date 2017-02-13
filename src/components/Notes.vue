@@ -1,21 +1,30 @@
 <template>
-  <div>
-    <input v-model="note" placeholder="Add Note">
-    <button @click="addNote">Add Note</button>
+  <div class="section">
+    <div class="container">
 
-    <div v-for="note in notes" v-on:dblclick="editNote(note)">
-      <span v-if="editingNote['.key'] === note['.key']">
-        <input v-model="editingNote.content"/>
-        <button @click="updateNote(note)">Save</button>
-      </span>
+      <div class="box">
+        <h3 class="title">Notes</h3>
 
-      <span v-else>
-        {{note.content}}
-        <button @click="deleteNote(note)">X</button>
-      </span>
+        <input v-model="note" placeholder="Add Note">
+        <button @click="addNote">Add Note</button>
 
-    </div>
-  </div>
+        <div v-for="note in notes" v-on:dblclick="editNote(note)">
+          <span v-if="editingNote['.key'] === note['.key']">
+            <input v-model="editingNote.content"/>
+            <button @click="updateNote(note)">Save</button>
+          </span>
+
+          <span v-else>
+            {{note.content}}
+            <button @click="deleteNote(note)">X</button>
+          </span>
+
+        </div>
+
+      </div><!-- /.box -->
+
+    </div><!-- /.container -->
+  </div><!-- /.section -->
 </template>
 
 <script>
@@ -58,4 +67,24 @@
 </script>
 
 <style>
+  .section {
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-link {
+    position: absolute;
+    bottom: -5px;
+  }
+
+  @media(min-width: 769px) {
+    .box {
+      width: 35%;
+    }
+  }
 </style>

@@ -12921,23 +12921,32 @@ var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
-//   <div>
-//     <input v-model="note" placeholder="Add Note">
-//     <button @click="addNote">Add Note</button>
+//   <div class="section">
+//     <div class="container">
 //
-//     <div v-for="note in notes" v-on:dblclick="editNote(note)">
-//       <span v-if="editingNote['.key'] === note['.key']">
-//         <input v-model="editingNote.content"/>
-//         <button @click="updateNote(note)">Save</button>
-//       </span>
+//       <div class="box">
+//         <h3 class="title">Notes</h3>
 //
-//       <span v-else>
-//         {{note.content}}
-//         <button @click="deleteNote(note)">X</button>
-//       </span>
+//         <input v-model="note" placeholder="Add Note">
+//         <button @click="addNote">Add Note</button>
 //
-//     </div>
-//   </div>
+//         <div v-for="note in notes" v-on:dblclick="editNote(note)">
+//           <span v-if="editingNote['.key'] === note['.key']">
+//             <input v-model="editingNote.content"/>
+//             <button @click="updateNote(note)">Save</button>
+//           </span>
+//
+//           <span v-else>
+//             {{note.content}}
+//             <button @click="deleteNote(note)">X</button>
+//           </span>
+//
+//         </div>
+//
+//       </div><!-- /.box -->
+//
+//     </div><!-- /.container -->
+//   </div><!-- /.section -->
 // </template>
 //
 // <script>
@@ -12977,6 +12986,26 @@ exports.default = {
 // </script>
 //
 // <style>
+//   .section {
+//     width: 100%;
+//   }
+//
+//   .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//
+//   .login-link {
+//     position: absolute;
+//     bottom: -5px;
+//   }
+//
+//   @media(min-width: 769px) {
+//     .box {
+//       width: 35%;
+//     }
+//   }
 // </style>
 
 /***/ }),
@@ -13099,7 +13128,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .login-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -13911,7 +13940,7 @@ module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n
 /* 33 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div>\n    <input v-model=\"note\" placeholder=\"Add Note\">\n    <button @click=\"addNote\">Add Note</button>\n\n    <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n      <span v-if=\"editingNote['.key'] === note['.key']\">\n        <input v-model=\"editingNote.content\"/>\n        <button @click=\"updateNote(note)\">Save</button>\n      </span>\n\n      <span v-else>\n        {{note.content}}\n        <button @click=\"deleteNote(note)\">X</button>\n      </span>\n\n    </div>\n  </div>\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Notes</h3>\n\n        <input v-model=\"note\" placeholder=\"Add Note\">\n        <button @click=\"addNote\">Add Note</button>\n\n        <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n          <span v-if=\"editingNote['.key'] === note['.key']\">\n            <input v-model=\"editingNote.content\"/>\n            <button @click=\"updateNote(note)\">Save</button>\n          </span>\n\n          <span v-else>\n            {{note.content}}\n            <button @click=\"deleteNote(note)\">X</button>\n          </span>\n\n        </div>\n\n      </div><!-- /.box -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 34 */
