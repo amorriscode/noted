@@ -9,7 +9,6 @@ export default {
     firebaseApp.firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        console.log(user);
         this.userAuthenticated(user);
       } else {
         // User is signed out.
@@ -30,25 +29,16 @@ export default {
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      // if (errorCode === 'auth/wrong-password') {
-      //   alert('Wrong password.');
-      // } else {
-      //   alert(errorMessage);
-      // }
+      if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+      } else {
+        alert(errorMessage);
+      }
       console.log(error);
     });
   },
 
   userAuthenticated(user) {
-    // USER PROPERTIES
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const emailVerified = user.emailVerified;
-    // const photoURL = user.photoURL;
-    // const isAnonymous = user.isAnonymous;
-    // const uid = user.uid;
-    // const providerData = user.providerData;
-
     localStorage.setItem('noted_uid', user.uid);
     this.user.authenticated = true;
   },
