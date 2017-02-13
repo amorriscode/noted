@@ -1,7 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import firebaseApp from './firebaseApp';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 // Setup store
 export default new Vuex.Store({
@@ -17,6 +18,6 @@ export default new Vuex.Store({
   mutations: {
     setUser (state, payload) {
       state.user = payload;
-    }
+    },
   }
 })

@@ -134,6 +134,35 @@ module.exports = firebase;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _firebase = __webpack_require__(24);
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Setup Firebase
+var config = {
+  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
+  authDomain: "noted-b5ad0.firebaseapp.com",
+  databaseURL: "https://noted-b5ad0.firebaseio.com",
+  messagingSenderId: "398915689559"
+};
+
+var firebase = _firebase2.default.initializeApp(config);
+var db = firebase.database();
+
+module.exports = {
+  firebase: firebase,
+  db: db
+};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -189,7 +218,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -441,77 +470,7 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _firebase = __webpack_require__(24);
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Setup Firebase
-var config = {
-  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
-  authDomain: "noted-b5ad0.firebaseapp.com",
-  databaseURL: "https://noted-b5ad0.firebaseio.com",
-  messagingSenderId: "398915689559"
-};
-
-var firebase = _firebase2.default.initializeApp(config);
-var db = firebase.database();
-
-module.exports = {
-  firebase: firebase,
-  db: db
-};
-
-/***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _vue = __webpack_require__(6);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-var _vuex = __webpack_require__(35);
-
-var _vuex2 = _interopRequireDefault(_vuex);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_vue2.default.use(_vuex2.default);
-
-// Setup store
-exports.default = new _vuex2.default.Store({
-  state: {
-    user: null
-  },
-  getters: {
-    uid: function uid(state) {
-      if (state.user) return state.user.uid;
-      return false;
-    }
-  },
-  mutations: {
-    setUser: function setUser(state, payload) {
-      state.user = payload;
-    }
-  }
-});
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9084,10 +9043,10 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6), __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -9271,6 +9230,51 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vue = __webpack_require__(5);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+var _vuex = __webpack_require__(35);
+
+var _vuex2 = _interopRequireDefault(_vuex);
+
+var _firebaseApp = __webpack_require__(2);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_vue2.default.use(_vuex2.default);
+
+// Setup store
+exports.default = new _vuex2.default.Store({
+  state: {
+    user: null
+  },
+  getters: {
+    uid: function uid(state) {
+      if (state.user) return state.user.uid;
+      return false;
+    }
+  },
+  mutations: {
+    setUser: function setUser(state, payload) {
+      state.user = payload;
+    }
+  }
+});
 
 /***/ }),
 /* 8 */
@@ -11649,7 +11653,7 @@ if (inBrowser && window.Vue) {
 
 module.exports = VueRouter;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
 
 /***/ }),
 /* 13 */
@@ -12033,7 +12037,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(4);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -12144,17 +12148,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _store = __webpack_require__(5);
-
-var _store2 = _interopRequireDefault(_store);
-
-var _firebaseApp = __webpack_require__(4);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// <template>
+var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //   <div class="section">
 //     <div class="container">
 //
@@ -12184,14 +12184,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // </template>
 //
 // <script>
-var notesRef = _firebaseApp2.default.db.ref('notes/' + _store2.default.getters.uid);
-
 exports.default = {
   data: function data() {
     return {
       note: '',
-      editingNote: '',
-      updateNotes: null
+      editingNote: ''
     };
   },
 
@@ -12200,9 +12197,14 @@ exports.default = {
       return this.$store.getters.uid;
     }
   },
-  firebase: {
-    notes: notesRef
+  firebase: function firebase() {
+    var userId = this.uid;
+    console.log(userId);
+    return {
+      notes: _firebaseApp2.default.db.ref('notes').orderByChild(userId).equalTo(true)
+    };
   },
+
   methods: {
     addNote: function addNote() {
       var newNote = {
@@ -12264,7 +12266,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(4);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -12368,7 +12370,7 @@ exports.default = {
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -12382,7 +12384,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -12396,7 +12398,7 @@ exports.push([module.i, "\n", ""]);
 /* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -12410,7 +12412,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -13075,7 +13077,7 @@ module.exports = firebase.storage;
 var content = __webpack_require__(18);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13101,7 +13103,7 @@ if(false) {
 var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13127,7 +13129,7 @@ if(false) {
 var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13153,7 +13155,7 @@ if(false) {
 var content = __webpack_require__(21);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -14011,7 +14013,7 @@ return index;
 "use strict";
 
 
-var _vue = __webpack_require__(6);
+var _vue = __webpack_require__(5);
 
 var _vue2 = _interopRequireDefault(_vue);
 
@@ -14027,7 +14029,7 @@ var _App = __webpack_require__(8);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(5);
+var _store = __webpack_require__(7);
 
 var _store2 = _interopRequireDefault(_store);
 

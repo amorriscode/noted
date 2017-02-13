@@ -44,8 +44,11 @@
         return this.$store.getters.uid;
       },
     },
-    firebase: {
-      notes: notesRef
+    firebase() {
+      const userId = this.uid;
+      return {
+        notes: firebaseApp.db.ref('notes').orderByChild(userId).equalTo(true)
+      }
     },
     methods: {
       addNote() {
