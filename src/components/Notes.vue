@@ -19,6 +19,10 @@
 </template>
 
 <script>
+  import firebaseApp from '../firebaseApp';
+
+  const notesRef = firebaseApp.db.ref('notes');
+
   export default {
     data () {
       return {
@@ -26,30 +30,30 @@
         editingNote: ''
       }
     },
-    // firebase: {
-    //   notes: notesRef
-    // },
-    // methods: {
-    //   addNote() {
-    //     // Push note into database
-    //     notesRef.push({
-    //       content: this.note
-    //     })
-    //   },
-    //   deleteNote(note) {
-    //     // Remove note from firebase
-    //     notesRef.child(note['.key']).remove();
-    //   },
-    //   editNote(note) {
-    //     // Push selected note into state
-    //     this.editingNote = note;
-    //   },
-    //   updateNote() {
-    //     // Update note in DB then clear the state
-    //     notesRef.child(this.editingNote['.key']).update({content: this.editingNote.content});
-    //     this.editingNote = '';
-    //   }
-    // }
+    firebase: {
+      notes: notesRef
+    },
+    methods: {
+      addNote() {
+        // Push note into database
+        notesRef.push({
+          content: this.note
+        })
+      },
+      deleteNote(note) {
+        // Remove note from firebase
+        notesRef.child(note['.key']).remove();
+      },
+      editNote(note) {
+        // Push selected note into state
+        this.editingNote = note;
+      },
+      updateNote() {
+        // Update note in DB then clear the state
+        notesRef.child(this.editingNote['.key']).update({content: this.editingNote.content});
+        this.editingNote = '';
+      }
+    }
   }
 </script>
 
