@@ -14,4 +14,8 @@ const db = firebase.database();
 module.exports = {
   firebase,
   db,
+  myNotes(uid) {
+    const notesRef = db.ref('notes');
+    return notesRef.orderByChild(`${uid}`).equalTo(true);
+  }
 }

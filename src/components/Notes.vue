@@ -39,13 +39,13 @@
         editingNote: ''
       }
     },
-    firebase: {
-      notes: notesRef
-    },
     computed: {
       uid() {
         return this.$store.getters.uid
-      }
+      },
+    },
+    firebase: {
+      notes: notesRef
     },
     methods: {
       addNote() {
