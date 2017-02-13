@@ -2,26 +2,32 @@
   <div class="section">
     <div class="container">
 
-      <div class="box">
-        <h3 class="title">Notes</h3>
+      <div class="content-wrapper">
 
-        <input v-model="note" placeholder="Add Note">
-        <button @click="addNote">Add Note</button>
+        <div class="box">
+          <h3 class="title">Notes</h3>
 
-        <div v-for="note in notes" v-on:dblclick="editNote(note)">
-          <span v-if="editingNote['.key'] === note['.key']">
-            <input v-model="editingNote.content"/>
-            <button @click="updateNote(note)">Save</button>
-          </span>
+          <input v-model="note" placeholder="Add Note">
+          <button @click="addNote">Add Note</button>
 
-          <span v-else>
-            {{note.content}}
-            <button @click="deleteNote(note)">X</button>
-          </span>
+          <div v-for="note in notes" v-on:dblclick="editNote(note)">
+            <span v-if="editingNote['.key'] === note['.key']">
+              <input v-model="editingNote.content"/>
+              <button @click="updateNote(note)">Save</button>
+            </span>
 
-        </div>
+            <span v-else>
+              {{note.content}}
+              <button @click="deleteNote(note)">X</button>
+            </span>
 
-      </div><!-- /.box -->
+          </div>
+
+        </div><!-- /.box -->
+
+        <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
+
+      </div><!-- /.content-wrapper -->
 
     </div><!-- /.container -->
   </div><!-- /.section -->
@@ -88,13 +94,22 @@
     justify-content: center;
   }
 
-  .login-link {
+  .box {
+    width: 100%;
+  }
+
+  .logout-link {
     position: absolute;
     bottom: -5px;
+    right: 0;
+  }
+
+  .content-wrapper {
+    position: relative;
   }
 
   @media(min-width: 769px) {
-    .box {
+    .content-wrapper {
       width: 35%;
     }
   }

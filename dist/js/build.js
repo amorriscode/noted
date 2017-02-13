@@ -9087,6 +9087,10 @@ exports.default = new _vuex2.default.Store({
     setUser: function setUser(state, payload) {
       localStorage.setItem('noted_user', (0, _stringify2.default)(payload));
       state.user = payload;
+    },
+    logoutUser: function logoutUser(state) {
+      localStorage.removeItem('noted_user');
+      state.user = null;
     }
   }
 });
@@ -9319,7 +9323,7 @@ _vue2.default.use(_vueRouter2.default);
 // Setup routes
 
 
-var routes = [{ path: '/login', component: _Login2.default }, { path: '/logout', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }];
+var routes = [{ path: '/login', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }];
 
 var router = new _vueRouter2.default({
   routes: routes
@@ -9327,6 +9331,9 @@ var router = new _vueRouter2.default({
 
 // Go to the login page if user isn't logged in
 router.beforeEach(function (to, from, next) {
+  // Logout the users
+  if (to.path === '/logout') _auth2.default.logout();
+
   if (_auth2.default.isAuthenticated()) return next();
 
   // Allow users to signup
@@ -9726,8 +9733,6 @@ var _store2 = _interopRequireDefault(_store);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  authenticated: false,
-
   isAuthenticated: function isAuthenticated() {
     // Make the user login persist
     var notedUser = JSON.parse(localStorage.getItem('noted_user'));
@@ -9737,9 +9742,9 @@ exports.default = {
 
     if (_store2.default.state.user) return true;
   },
-
-
-  logout: function logout() {}
+  logout: function logout() {
+    _store2.default.commit('logoutUser');
+  }
 };
 
 /***/ }),
@@ -9897,26 +9902,32 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //   <div class="section">
 //     <div class="container">
 //
-//       <div class="box">
-//         <h3 class="title">Notes</h3>
+//       <div class="content-wrapper">
 //
-//         <input v-model="note" placeholder="Add Note">
-//         <button @click="addNote">Add Note</button>
+//         <div class="box">
+//           <h3 class="title">Notes</h3>
 //
-//         <div v-for="note in notes" v-on:dblclick="editNote(note)">
-//           <span v-if="editingNote['.key'] === note['.key']">
-//             <input v-model="editingNote.content"/>
-//             <button @click="updateNote(note)">Save</button>
-//           </span>
+//           <input v-model="note" placeholder="Add Note">
+//           <button @click="addNote">Add Note</button>
 //
-//           <span v-else>
-//             {{note.content}}
-//             <button @click="deleteNote(note)">X</button>
-//           </span>
+//           <div v-for="note in notes" v-on:dblclick="editNote(note)">
+//             <span v-if="editingNote['.key'] === note['.key']">
+//               <input v-model="editingNote.content"/>
+//               <button @click="updateNote(note)">Save</button>
+//             </span>
 //
-//         </div>
+//             <span v-else>
+//               {{note.content}}
+//               <button @click="deleteNote(note)">X</button>
+//             </span>
 //
-//       </div><!-- /.box -->
+//           </div>
+//
+//         </div><!-- /.box -->
+//
+//         <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
+//
+//       </div><!-- /.content-wrapper -->
 //
 //     </div><!-- /.container -->
 //   </div><!-- /.section -->
@@ -9981,13 +9992,22 @@ exports.default = {
 //     justify-content: center;
 //   }
 //
-//   .login-link {
+//   .box {
+//     width: 100%;
+//   }
+//
+//   .logout-link {
 //     position: absolute;
-//     bottom: -5px;
+//     bottom: 0;
+//     right: 0;
+//   }
+//
+//   .content-wrapper {
+//     position: relative;
 //   }
 //
 //   @media(min-width: 769px) {
-//     .box {
+//     .content-wrapper {
 //       width: 35%;
 //     }
 //   }
@@ -10135,7 +10155,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .login-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    width: 100%;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: 0;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -10947,7 +10967,7 @@ module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n
 /* 34 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Notes</h3>\n\n        <input v-model=\"note\" placeholder=\"Add Note\">\n        <button @click=\"addNote\">Add Note</button>\n\n        <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n          <span v-if=\"editingNote['.key'] === note['.key']\">\n            <input v-model=\"editingNote.content\"/>\n            <button @click=\"updateNote(note)\">Save</button>\n          </span>\n\n          <span v-else>\n            {{note.content}}\n            <button @click=\"deleteNote(note)\">X</button>\n          </span>\n\n        </div>\n\n      </div><!-- /.box -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <input v-model=\"note\" placeholder=\"Add Note\">\n          <button @click=\"addNote\">Add Note</button>\n\n          <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n            <span v-if=\"editingNote['.key'] === note['.key']\">\n              <input v-model=\"editingNote.content\"/>\n              <button @click=\"updateNote(note)\">Save</button>\n            </span>\n\n            <span v-else>\n              {{note.content}}\n              <button @click=\"deleteNote(note)\">X</button>\n            </span>\n\n          </div>\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 35 */

@@ -19,5 +19,9 @@ export default new Vuex.Store({
       localStorage.setItem('noted_user', JSON.stringify(payload));
       state.user = payload;
     },
+    logoutUser (state) {
+      localStorage.removeItem('noted_user');
+      state.user = null;
+    },
   }
 })

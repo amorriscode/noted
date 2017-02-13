@@ -11,7 +11,6 @@ import Notes from './components/Notes.vue';
 
 const routes = [
   { path: '/login', component: Login },
-  { path: '/logout', component: Login },
   { path: '/signup', component: Signup },
   { path: '/notes', component: Notes }
 ]
@@ -22,6 +21,9 @@ const router = new VueRouter({
 
 // Go to the login page if user isn't logged in
 router.beforeEach((to, from, next) => {
+  // Logout the users
+  if (to.path === '/logout') auth.logout();
+
   if (auth.isAuthenticated()) return next();
 
   // Allow users to signup
