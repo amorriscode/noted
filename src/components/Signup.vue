@@ -1,9 +1,35 @@
 <template>
-  <div>
-    <input v-model="credentials.email" placeholder="Email">
-    <input v-model="credentials.password" placeholder="Password">
-    <button @click="signup">Signup</button>
-  </div>
+  <div class="section">
+    <div class="container">
+
+      <div class="box">
+        <h3 class="title">Signup</h3>
+
+        <p class="control has-icon">
+          <input v-model="credentials.email" class="input" type="email" placeholder="Email">
+          <span class="icon is-small">
+            <i class="fa fa-envelope"></i>
+          </span>
+        </p>
+        <p class="control has-icon">
+          <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+          <span class="icon is-small">
+            <i class="fa fa-lock"></i>
+          </span>
+        </p>
+        <p class="control">
+          <button @click="signup" class="button is-success">
+            Signup
+          </button>
+
+        </p>
+
+      </div><!-- /.box -->
+
+      <a class="login-link"><router-link to="/login">Already have an account?</router-link></a>
+
+    </div><!-- /.container -->
+  </div><!-- /.section -->
 </template>
 
 <script>
@@ -44,4 +70,24 @@
 </script>
 
 <style>
+  .section {
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-link {
+    position: absolute;
+    bottom: -5px;
+  }
+
+  @media(min-width: 769px) {
+    .box {
+      width: 35%;
+    }
+  }
 </style>

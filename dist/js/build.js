@@ -13032,14 +13032,60 @@ exports.default = {
 // </script>
 //
 // <style>
+//   .section {
+//     width: 100%;
+//   }
+//
+//   .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//
+//   .login-link {
+//     position: absolute;
+//     bottom: -5px;
+//   }
+//
+//   @media(min-width: 769px) {
+//     .box {
+//       width: 35%;
+//     }
+//   }
 // </style>
 //
 // <template>
-//   <div>
-//     <input v-model="credentials.email" placeholder="Email">
-//     <input v-model="credentials.password" placeholder="Password">
-//     <button @click="signup">Signup</button>
-//   </div>
+//   <div class="section">
+//     <div class="container">
+//
+//       <div class="box">
+//         <h3 class="title">Signup</h3>
+//
+//         <p class="control has-icon">
+//           <input v-model="credentials.email" class="input" type="email" placeholder="Email">
+//           <span class="icon is-small">
+//             <i class="fa fa-envelope"></i>
+//           </span>
+//         </p>
+//         <p class="control has-icon">
+//           <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+//           <span class="icon is-small">
+//             <i class="fa fa-lock"></i>
+//           </span>
+//         </p>
+//         <p class="control">
+//           <button @click="signup" class="button is-success">
+//             Signup
+//           </button>
+//
+//         </p>
+//
+//       </div><!-- /.box -->
+//
+//       <a class="login-link"><router-link to="/login">Already have an account?</router-link></a>
+//
+//     </div><!-- /.container -->
+//   </div><!-- /.section -->
 // </template>
 //
 // <script>
@@ -13095,7 +13141,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .login-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -13871,7 +13917,7 @@ module.exports = "\n  <div>\n    <input v-model=\"note\" placeholder=\"Add Note\
 /* 34 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div>\n    <input v-model=\"credentials.email\" placeholder=\"Email\">\n    <input v-model=\"credentials.password\" placeholder=\"Password\">\n    <button @click=\"signup\">Signup</button>\n  </div>\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Signup</h3>\n\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-envelope\"></i>\n          </span>\n        </p>\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-lock\"></i>\n          </span>\n        </p>\n        <p class=\"control\">\n          <button @click=\"signup\" class=\"button is-success\">\n            Signup\n          </button>\n\n        </p>\n\n      </div><!-- /.box -->\n\n      <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 35 */
