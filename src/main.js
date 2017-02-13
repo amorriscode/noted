@@ -11,10 +11,12 @@ Vue.use(Vuex)
 
 // Setup routes
 import Login from './components/Login.vue';
+import Signup from './components/Signup.vue';
 import Notes from './components/Notes.vue';
 
 const routes = [
   { path: '/login', component: Login },
+  { path: '/signup', component: Signup },
   { path: '/notes', component: Notes }
 ]
 
