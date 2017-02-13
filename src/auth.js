@@ -3,10 +3,13 @@ import firebaseApp from './firebaseApp';
 export default {
 
   constructor() {
+    this.checkAuth();
+
     // Firebase auth listener
     firebaseApp.firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
+        console.log(user);
         this.userAuthenticated(user);
       } else {
         // User is signed out.

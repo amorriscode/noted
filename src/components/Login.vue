@@ -27,7 +27,6 @@
     methods: {
       login() {
         const credentials = this.credentials;
-        auth.constructor();
         auth.login(credentials);
       },
       signup() {

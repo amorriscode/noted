@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Login v-if="user === ''" />
+    <Login v-if="user === false" />
 
     <div v-else>
       <input v-model="note" placeholder="Add Note">
@@ -23,17 +23,21 @@
 </template>
 
 <script>
-import Login from './components/Login.vue';
+  import auth from './auth';
+  import Login from './components/Login.vue';
 
   export default {
     components: { Login },
     data () {
       return {
-        user: '',
+        user: auth.user.authenticated,
         note: '',
         editingNote: ''
       }
     },
+    beforeCreate() {
+      auth.constructor();
+    }
     // firebase: {
     //   notes: notesRef
     // },

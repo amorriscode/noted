@@ -134,6 +134,107 @@ module.exports = firebase;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _firebaseApp = __webpack_require__(8);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+  constructor: function constructor() {
+    var _this = this;
+
+    this.checkAuth();
+
+    // Firebase auth listener
+    _firebaseApp2.default.firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // User is signed in.
+        console.log(user);
+        _this.userAuthenticated(user);
+      } else {
+        // User is signed out.
+      }
+    });
+  },
+
+
+  // User object will let us check authentication status
+  user: {
+    authenticated: false
+  },
+
+  // Send a request to the login URL and save the returned JWT
+  login: function login(credentials) {
+    // Signup with email and use some basic error handling
+    _firebaseApp2.default.firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      // if (errorCode === 'auth/wrong-password') {
+      //   alert('Wrong password.');
+      // } else {
+      //   alert(errorMessage);
+      // }
+      console.log(error);
+    });
+  },
+  userAuthenticated: function userAuthenticated(user) {
+    // USER PROPERTIES
+    // const displayName = user.displayName;
+    // const email = user.email;
+    // const emailVerified = user.emailVerified;
+    // const photoURL = user.photoURL;
+    // const isAnonymous = user.isAnonymous;
+    // const uid = user.uid;
+    // const providerData = user.providerData;
+
+    localStorage.setItem('noted_uid', user.uid);
+    this.user.authenticated = true;
+  },
+  signup: function signup(user) {
+    _firebaseApp2.default.firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch(function (error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      if (errorCode == 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else {
+        alert(errorMessage);
+      }
+      console.log(error);
+    });
+  },
+
+
+  // To log out, we just need to remove the token
+  logout: function logout() {
+    localStorage.removeItem('noted_uid');
+    this.user.authenticated = false;
+  },
+  checkAuth: function checkAuth() {
+    var noted_user = localStorage.getItem('noted_uid');
+    if (noted_user) {
+      this.user.authenticated = true;
+    } else {
+      this.user.authenticated = false;
+    }
+  }
+};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -189,7 +290,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -441,7 +542,7 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
@@ -464,7 +565,7 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9040,7 +9141,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(18), __webpack_require__(0)))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -9388,105 +9489,6 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _firebaseApp = __webpack_require__(8);
-
-var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  constructor: function constructor() {
-    var _this = this;
-
-    // Firebase auth listener
-    _firebaseApp2.default.firebase.auth().onAuthStateChanged(function (user) {
-      if (user) {
-        // User is signed in.
-        console.log(user);
-        _this.userAuthenticated(user);
-      } else {
-        // User is signed out.
-      }
-    });
-  },
-
-
-  // User object will let us check authentication status
-  user: {
-    authenticated: false
-  },
-
-  // Send a request to the login URL and save the returned JWT
-  login: function login(credentials) {
-    // Signup with email and use some basic error handling
-    _firebaseApp2.default.firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      // if (errorCode === 'auth/wrong-password') {
-      //   alert('Wrong password.');
-      // } else {
-      //   alert(errorMessage);
-      // }
-      console.log(error);
-    });
-  },
-  userAuthenticated: function userAuthenticated(user) {
-    // USER PROPERTIES
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const emailVerified = user.emailVerified;
-    // const photoURL = user.photoURL;
-    // const isAnonymous = user.isAnonymous;
-    // const uid = user.uid;
-    // const providerData = user.providerData;
-
-    localStorage.setItem('noted_uid', user.uid);
-    this.user.authenticated = true;
-  },
-  signup: function signup(user) {
-    _firebaseApp2.default.firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch(function (error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      if (errorCode == 'auth/weak-password') {
-        alert('The password is too weak.');
-      } else {
-        alert(errorMessage);
-      }
-      console.log(error);
-    });
-  },
-
-
-  // To log out, we just need to remove the token
-  logout: function logout() {
-    localStorage.removeItem('noted_uid');
-    this.user.authenticated = false;
-  },
-  checkAuth: function checkAuth() {
-    var noted_user = localStorage.getItem('noted_uid');
-    if (noted_user) {
-      this.user.authenticated = true;
-    } else {
-      this.user.authenticated = false;
-    }
-  }
-};
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9526,24 +9528,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _auth = __webpack_require__(2);
+
+var _auth2 = _interopRequireDefault(_auth);
+
 var _Login = __webpack_require__(23);
 
 var _Login2 = _interopRequireDefault(_Login);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-  components: { Login: _Login2.default },
-  data: function data() {
-    return {
-      user: '',
-      note: '',
-      editingNote: ''
-    };
-  }
-}; // <template>
+// <template>
 //   <div>
-//     <Login v-if="user === ''" />
+//     <Login v-if="user === false" />
 //
 //     <div v-else>
 //       <input v-model="note" placeholder="Add Note">
@@ -9566,6 +9563,48 @@ exports.default = {
 // </template>
 //
 // <script>
+exports.default = {
+  components: { Login: _Login2.default },
+  data: function data() {
+    return {
+      user: _auth2.default.user.authenticated,
+      note: '',
+      editingNote: ''
+    };
+  },
+  beforeCreate: function beforeCreate() {
+    _auth2.default.constructor();
+  }
+  // firebase: {
+  //   notes: notesRef
+  // },
+  // methods: {
+  //   addNote() {
+  //     // Push note into database
+  //     notesRef.push({
+  //       content: this.note
+  //     })
+  //   },
+  //   deleteNote(note) {
+  //     // Remove note from firebase
+  //     notesRef.child(note['.key']).remove();
+  //   },
+  //   editNote(note) {
+  //     // Push selected note into state
+  //     this.editingNote = note;
+  //   },
+  //   updateNote() {
+  //     // Update note in DB then clear the state
+  //     notesRef.child(this.editingNote['.key']).update({content: this.editingNote.content});
+  //     this.editingNote = '';
+  //   }
+  // }
+
+};
+// </script>
+//
+// <style>
+// </style>
 
 /***/ }),
 /* 10 */
@@ -9578,7 +9617,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _auth = __webpack_require__(7);
+var _auth = __webpack_require__(2);
 
 var _auth2 = _interopRequireDefault(_auth);
 
@@ -9597,7 +9636,6 @@ exports.default = {
   methods: {
     login: function login() {
       var credentials = this.credentials;
-      _auth2.default.constructor();
       _auth2.default.login(credentials);
     },
     signup: function signup() {
@@ -9630,7 +9668,7 @@ exports.default = {
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -9644,7 +9682,7 @@ exports.push([module.i, "\n", ""]);
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -10495,7 +10533,7 @@ process.umask = function() { return 0; };
 var content = __webpack_require__(11);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -10521,7 +10559,7 @@ if(false) {
 var content = __webpack_require__(12);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(3)(content, {});
+var update = __webpack_require__(4)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -10541,7 +10579,7 @@ if(false) {
 /* 21 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div>\n    <Login v-if=\"user === ''\" />\n\n    <div v-else>\n      <input v-model=\"note\" placeholder=\"Add Note\">\n      <button @click=\"addNote\">Add Note</button>\n\n      <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n        <span v-if=\"editingNote['.key'] === note['.key']\">\n          <input v-model=\"editingNote.content\"/>\n          <button @click=\"updateNote(note)\">Save</button>\n        </span>\n\n        <span v-else>\n          {{note.content}}\n          <button @click=\"deleteNote(note)\">X</button>\n        </span>\n\n      </div>\n    </div>\n  </div>\n";
+module.exports = "\n  <div>\n    <Login v-if=\"user === false\" />\n\n    <div v-else>\n      <input v-model=\"note\" placeholder=\"Add Note\">\n      <button @click=\"addNote\">Add Note</button>\n\n      <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n        <span v-if=\"editingNote['.key'] === note['.key']\">\n          <input v-model=\"editingNote.content\"/>\n          <button @click=\"updateNote(note)\">Save</button>\n        </span>\n\n        <span v-else>\n          {{note.content}}\n          <button @click=\"deleteNote(note)\">X</button>\n        </span>\n\n      </div>\n    </div>\n  </div>\n";
 
 /***/ }),
 /* 22 */
@@ -10579,15 +10617,15 @@ if (false) {(function () {  module.hot.accept()
 "use strict";
 
 
-var _vue = __webpack_require__(5);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuefire = __webpack_require__(6);
+var _vuefire = __webpack_require__(7);
 
 var _vuefire2 = _interopRequireDefault(_vuefire);
 
-var _App = __webpack_require__(4);
+var _App = __webpack_require__(5);
 
 var _App2 = _interopRequireDefault(_App);
 
