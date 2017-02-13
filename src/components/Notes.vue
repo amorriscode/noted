@@ -36,12 +36,12 @@
     data () {
       return {
         note: '',
-        editingNote: ''
+        editingNote: '',
       }
     },
     computed: {
       uid() {
-        return this.$store.getters.uid
+        return this.$store.getters.uid;
       },
     },
     firebase: {
