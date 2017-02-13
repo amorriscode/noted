@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <Login v-if="user === false" />
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
   import auth from './auth';
-  import Login from './components/Login.vue';
 
   export default {
-    components: { Login },
     data () {
       return {
         user: auth.user.authenticated,

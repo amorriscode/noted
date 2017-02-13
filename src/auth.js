@@ -50,7 +50,7 @@ export default {
     // const providerData = user.providerData;
 
     localStorage.setItem('noted_uid', user.uid);
-    this.user.authenticated = true
+    this.user.authenticated = true;
   },
 
   signup(user) {
