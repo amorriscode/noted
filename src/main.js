@@ -27,6 +27,12 @@ const router = new VueRouter({
 
 // Go to the login page if user isn't logged in
 router.beforeEach((to, from, next) => {
+  // Make the user login persist
+  const notedUser = JSON.parse(localStorage.getItem('noted_user'));
+  if (notedUser && !store.state.user) {
+    store.commit('setUser', notedUser);
+  }
+
   if (store.state.user) return next();
 
   // Allow users to signup

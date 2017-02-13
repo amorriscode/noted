@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import firebaseApp from './firebaseApp';
 
 Vue.use(Vuex);
 
@@ -17,6 +16,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setUser (state, payload) {
+      localStorage.setItem('noted_user', JSON.stringify(payload));
       state.user = payload;
     },
   }

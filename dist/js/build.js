@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 36);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -134,35 +134,6 @@ module.exports = firebase;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _firebase = __webpack_require__(24);
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Setup Firebase
-var config = {
-  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
-  authDomain: "noted-b5ad0.firebaseapp.com",
-  databaseURL: "https://noted-b5ad0.firebaseio.com",
-  messagingSenderId: "398915689559"
-};
-
-var firebase = _firebase2.default.initializeApp(config);
-var db = firebase.database();
-
-module.exports = {
-  firebase: firebase,
-  db: db
-};
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -218,7 +189,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -468,6 +439,35 @@ function updateLink(linkElement, obj) {
 		URL.revokeObjectURL(oldSrc);
 }
 
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _firebase = __webpack_require__(27);
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Setup Firebase
+var config = {
+  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
+  authDomain: "noted-b5ad0.firebaseapp.com",
+  databaseURL: "https://noted-b5ad0.firebaseio.com",
+  messagingSenderId: "398915689559"
+};
+
+var firebase = _firebase2.default.initializeApp(config);
+var db = firebase.database();
+
+module.exports = {
+  firebase: firebase,
+  db: db
+};
 
 /***/ }),
 /* 5 */
@@ -9242,17 +9242,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _stringify = __webpack_require__(18);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
 var _vue = __webpack_require__(5);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(35);
+var _vuex = __webpack_require__(38);
 
 var _vuex2 = _interopRequireDefault(_vuex);
-
-var _firebaseApp = __webpack_require__(2);
-
-var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -9271,6 +9271,7 @@ exports.default = new _vuex2.default.Store({
   },
   mutations: {
     setUser: function setUser(state, payload) {
+      localStorage.setItem('noted_user', (0, _stringify2.default)(payload));
       state.user = payload;
     }
   }
@@ -9281,9 +9282,9 @@ exports.default = new _vuex2.default.Store({
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(28)
+__webpack_require__(31)
 __vue_script__ = __webpack_require__(14)
-__vue_template__ = __webpack_require__(31)
+__vue_template__ = __webpack_require__(34)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9304,9 +9305,9 @@ if (false) {(function () {  module.hot.accept()
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(29)
+__webpack_require__(32)
 __vue_script__ = __webpack_require__(15)
-__vue_template__ = __webpack_require__(32)
+__vue_template__ = __webpack_require__(35)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9327,9 +9328,9 @@ if (false) {(function () {  module.hot.accept()
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(27)
+__webpack_require__(30)
 __vue_script__ = __webpack_require__(16)
-__vue_template__ = __webpack_require__(33)
+__vue_template__ = __webpack_require__(36)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9350,9 +9351,9 @@ if (false) {(function () {  module.hot.accept()
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(30)
+__webpack_require__(33)
 __vue_script__ = __webpack_require__(17)
-__vue_template__ = __webpack_require__(34)
+__vue_template__ = __webpack_require__(37)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -12037,7 +12038,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(2);
+var _firebaseApp = __webpack_require__(4);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -12148,7 +12149,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(2);
+var _firebaseApp = __webpack_require__(4);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -12199,7 +12200,6 @@ exports.default = {
   },
   firebase: function firebase() {
     var userId = this.uid;
-    console.log(userId);
     return {
       notes: _firebaseApp2.default.db.ref('notes').orderByChild(userId).equalTo(true)
     };
@@ -12266,7 +12266,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(2);
+var _firebaseApp = __webpack_require__(4);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -12370,49 +12370,29 @@ exports.default = {
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .login-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
-
-// exports
-
+module.exports = { "default": __webpack_require__(19), __esModule: true };
 
 /***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n", ""]);
-
-// exports
-
+var core = __webpack_require__(20);
+module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
+  return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
+};
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .signup-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
-
-// exports
-
+var core = module.exports = {version: '1.2.6'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
+exports = module.exports = __webpack_require__(2)();
 // imports
 
 
@@ -12424,6 +12404,48 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 /***/ }),
 /* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .signup-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .login-link {\n    position: absolute;\n    bottom: -5px;\n  }\n\n  @media(min-width: 769px) {\n    .box {\n      width: 35%;\n    }\n  }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -12671,7 +12693,7 @@ module.exports = firebase.auth;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 23 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -12942,7 +12964,7 @@ module.exports = firebase.database;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -12953,15 +12975,15 @@ module.exports = firebase.database;
  *   firebase = require('firebase');
  */
 var firebase = __webpack_require__(1);
-__webpack_require__(22);
-__webpack_require__(23);
-__webpack_require__(26);
 __webpack_require__(25);
+__webpack_require__(26);
+__webpack_require__(29);
+__webpack_require__(28);
 module.exports = firebase;
 
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -13007,7 +13029,7 @@ module.exports = firebase.messaging;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -13068,16 +13090,16 @@ module.exports = firebase.storage;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(18);
+var content = __webpack_require__(21);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(3)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13094,16 +13116,16 @@ if(false) {
 }
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(22);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(3)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13120,16 +13142,16 @@ if(false) {
 }
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(23);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(3)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13146,16 +13168,16 @@ if(false) {
 }
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(24);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(3)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -13172,31 +13194,31 @@ if(false) {
 }
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div id=\"app\">\n    <router-view></router-view>\n  </div>\n";
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Login</h3>\n\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-envelope\"></i>\n          </span>\n        </p>\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-lock\"></i>\n          </span>\n        </p>\n        <p class=\"control\">\n          <button @click=\"login\" class=\"button is-success\">\n            Login\n          </button>\n\n        </p>\n\n      </div><!-- /.box -->\n\n      <a class=\"signup-link\"><router-link to=\"/signup\">Need to create an account?</router-link></a>\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Notes</h3>\n\n        <input v-model=\"note\" placeholder=\"Add Note\">\n        <button @click=\"addNote\">Add Note</button>\n\n        <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n          <span v-if=\"editingNote['.key'] === note['.key']\">\n            <input v-model=\"editingNote.content\"/>\n            <button @click=\"updateNote(note)\">Save</button>\n          </span>\n\n          <span v-else>\n            {{note.content}}\n            <button @click=\"deleteNote(note)\">X</button>\n          </span>\n\n        </div>\n\n      </div><!-- /.box -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"box\">\n        <h3 class=\"title\">Signup</h3>\n\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-envelope\"></i>\n          </span>\n        </p>\n        <p class=\"control has-icon\">\n          <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n          <span class=\"icon is-small\">\n            <i class=\"fa fa-lock\"></i>\n          </span>\n        </p>\n        <p class=\"control\">\n          <button @click=\"signup\" class=\"button is-success\">\n            Signup\n          </button>\n\n        </p>\n\n      </div><!-- /.box -->\n\n      <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -14007,7 +14029,7 @@ return index;
 
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14065,6 +14087,12 @@ var router = new _vueRouter2.default({
 
 // Go to the login page if user isn't logged in
 router.beforeEach(function (to, from, next) {
+  // Make the user login persist
+  var notedUser = JSON.parse(localStorage.getItem('noted_user'));
+  if (notedUser && !_store2.default.state.user) {
+    _store2.default.commit('setUser', notedUser);
+  }
+
   if (_store2.default.state.user) return next();
 
   // Allow users to signup
