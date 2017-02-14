@@ -24848,7 +24848,7 @@ exports.default = {
     var userId = this.uid;
     var now = parseInt((0, _moment2.default)().unix());
     return {
-      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByValue()
+      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByKey()
     };
   },
 
