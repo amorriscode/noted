@@ -4,6 +4,12 @@ A simple application built for storing notes. I chose to use the VueJS because i
 
 This app was built for a technical assessment, but if you feel like adding or requesting features, drop me a PR or feature request!
 
+### How to use
+
+1. Click the plus to add a note
+
+2. Double click a note to edit
+
 ### Build Instructions
 
 _In previous projects I had used a [webpack template](https://github.com/vuejs-templates/webpack) to get going fast. This time, however, I wanted to learn what was under the hood._
@@ -18,7 +24,7 @@ _In previous projects I had used a [webpack template](https://github.com/vuejs-t
   * Run using `firebase serve`
   * Deploy using `firebase deploy`
 
-### ToDo
+### Things I want to add...
 
 * Share notes between users
 * WYSIWYG editor
