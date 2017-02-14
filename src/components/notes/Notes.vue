@@ -14,10 +14,14 @@
           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
 
           <div class="notes-list" v-else>
-            <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
-              <h4 class="title is-4">{{safeTitle(note.title)}}</h4>
+            <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
+              <h4 class="title is-4">{{safeTitle(note)}}</h4>
               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div><!-- /.notes-container -->
+
+            <div v-else>
+              You have no notes yet.
             </div>
           </div><!-- /.notes-list -->
 
@@ -61,8 +65,13 @@
         const timePassed = moment(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
         return (timePassed === 'Invalid date') ? 'a long, long time ago...' : timePassed;
       },
-      safeTitle(title) {
-        return (title.length > 35) ? `${title.substr(1, 35)}...` : title;
+      safeTitle(note) {
+        if (note.title) {
+          return (note.title.length > 35) ? `${note.title.substr(1, 35)}...` : notel.title;
+        } else {
+          return 'Untitled';
+        }
+
       },
       newNote() {
         this.editingNote = {

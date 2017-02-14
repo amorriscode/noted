@@ -24844,10 +24844,14 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
 //
 //           <div class="notes-list" v-else>
-//             <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
-//               <h4 class="title is-4">{{safeTitle(note.title)}}</h4>
+//             <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
+//               <h4 class="title is-4">{{safeTitle(note)}}</h4>
 //               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
 //               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+//             </div><!-- /.notes-container -->
+//
+//             <div v-else>
+//               You have no notes yet.
 //             </div>
 //           </div><!-- /.notes-list -->
 //
@@ -24885,10 +24889,14 @@ exports.default = {
   methods: {
     timeAgo: function timeAgo(date) {
       var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
-      return timePassed === 'Invalid date' ? 'A long, long time ago...' : timePassed;
+      return timePassed === 'Invalid date' ? 'a long, long time ago...' : timePassed;
     },
-    safeTitle: function safeTitle(title) {
-      return title.length > 45 ? title.substr(1, 45) + '...' : title;
+    safeTitle: function safeTitle(note) {
+      if (note.title) {
+        return note.title.length > 35 ? note.title.substr(1, 35) + '...' : notel.title;
+      } else {
+        return 'Untitled';
+      }
     },
     newNote: function newNote() {
       this.editingNote = {
@@ -26356,7 +26364,7 @@ module.exports = "\n  <div>\n    <div class=\"note-editor\" v-if=\"editingNote\"
 /* 164 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a v-if=\"editingNote\" class=\"close-editor-icon\" @click=\"closeEditor\"><i class=\"fa fa-times fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <a v-else class=\"new-note-icon\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <NoteEditor v-if=\"editingNote\" :note=editingNote v-on:closeEditorClicked=\"closeEditor\" />\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              <h4 class=\"title is-4\">{{safeTitle(note.title)}}</h4>\n              <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a v-if=\"editingNote\" class=\"close-editor-icon\" @click=\"closeEditor\"><i class=\"fa fa-times fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <a v-else class=\"new-note-icon\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <NoteEditor v-if=\"editingNote\" :note=editingNote v-on:closeEditorClicked=\"closeEditor\" />\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-if=\"notes.length > 0\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              <h4 class=\"title is-4\">{{safeTitle(note)}}</h4>\n              <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div><!-- /.notes-container -->\n\n            <div v-else>\n              You have no notes yet.\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 165 */
