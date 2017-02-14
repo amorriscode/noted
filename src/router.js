@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 // Setup routes
 import Login from './components/Login.vue';
 import Signup from './components/Signup.vue';
-import Notes from './components/Notes.vue';
+import Notes from './components/notes/Notes.vue';
 
 const routes = [
   { path: '/login', component: Login },

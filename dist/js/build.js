@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 167);
+/******/ 	return __webpack_require__(__webpack_require__.s = 172);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1884,7 +1884,7 @@ function loadLocale(name) {
             module && module.exports) {
         try {
             oldLocale = globalLocale._abbr;
-            __webpack_require__(152)("./" + name);
+            __webpack_require__(154)("./" + name);
             // because defineLocale currently also sets the global locale, we
             // want to undo that for lazy loaded locales
             getSetGlobalLocale(oldLocale);
@@ -4372,7 +4372,7 @@ return hooks;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(166)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(171)(module)))
 
 /***/ }),
 /* 1 */
@@ -4403,45 +4403,6 @@ module.exports = g;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
-/*! @license Firebase v3.6.9
-    Build: 3.6.9-rc.1
-    Terms: https://firebase.google.com/terms/ */
-var firebase = null; (function() { var aa="function"==typeof Object.defineProperties?Object.defineProperty:function(a,b,c){if(c.get||c.set)throw new TypeError("ES3 does not support getters and setters.");a!=Array.prototype&&a!=Object.prototype&&(a[b]=c.value)},h="undefined"!=typeof window&&window===this?this:"undefined"!=typeof global&&null!=global?global:this,l=function(){l=function(){};h.Symbol||(h.Symbol=ba)},ca=0,ba=function(a){return"jscomp_symbol_"+(a||"")+ca++},n=function(){l();var a=h.Symbol.iterator;a||(a=h.Symbol.iterator=
-h.Symbol("iterator"));"function"!=typeof Array.prototype[a]&&aa(Array.prototype,a,{configurable:!0,writable:!0,value:function(){return m(this)}});n=function(){}},m=function(a){var b=0;return da(function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}})},da=function(a){n();a={next:a};a[h.Symbol.iterator]=function(){return this};return a},q=this,r=function(){},t=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);
-if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},v=function(a){return"function"==t(a)},ea=function(a,
-b,c){return a.call.apply(a.bind,arguments)},fa=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}},w=function(a,b,c){w=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?ea:fa;return w.apply(null,arguments)},x=function(a,b){var c=Array.prototype.slice.call(arguments,
-1);return function(){var b=c.slice();b.push.apply(b,arguments);return a.apply(this,b)}},y=function(a,b){function c(){}c.prototype=b.prototype;a.ba=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.aa=function(a,c,f){for(var d=Array(arguments.length-2),e=2;e<arguments.length;e++)d[e-2]=arguments[e];return b.prototype[c].apply(a,d)}};var z;z="undefined"!==typeof window?window:"undefined"!==typeof self?self:global;function __extends(a,b){function c(){this.constructor=a}for(var d in b)b.hasOwnProperty(d)&&(a[d]=b[d]);a.prototype=null===b?Object.create(b):(c.prototype=b.prototype,new c)}
-function __decorate(a,b,c,d){var e=arguments.length,f=3>e?b:null===d?d=Object.getOwnPropertyDescriptor(b,c):d,g;g=z.Reflect;if("object"===typeof g&&"function"===typeof g.decorate)f=g.decorate(a,b,c,d);else for(var k=a.length-1;0<=k;k--)if(g=a[k])f=(3>e?g(f):3<e?g(b,c,f):g(b,c))||f;return 3<e&&f&&Object.defineProperty(b,c,f),f}function __metadata(a,b){var c=z.Reflect;if("object"===typeof c&&"function"===typeof c.metadata)return c.metadata(a,b)}
-var __param=function(a,b){return function(c,d){b(c,d,a)}},__awaiter=function(a,b,c,d){return new (c||(c=Promise))(function(e,f){function g(a){try{p(d.next(a))}catch(u){f(u)}}function k(a){try{p(d.throw(a))}catch(u){f(u)}}function p(a){a.done?e(a.value):(new c(function(b){b(a.value)})).then(g,k)}p((d=d.apply(a,b)).next())})};"undefined"!==typeof z.M&&z.M||(z.__extends=__extends,z.__decorate=__decorate,z.__metadata=__metadata,z.__param=__param,z.__awaiter=__awaiter);var A=function(a){if(Error.captureStackTrace)Error.captureStackTrace(this,A);else{var b=Error().stack;b&&(this.stack=b)}a&&(this.message=String(a))};y(A,Error);A.prototype.name="CustomError";var ga=function(a,b){for(var c=a.split("%s"),d="",e=Array.prototype.slice.call(arguments,1);e.length&&1<c.length;)d+=c.shift()+e.shift();return d+c.join("%s")};var B=function(a,b){b.unshift(a);A.call(this,ga.apply(null,b));b.shift()};y(B,A);B.prototype.name="AssertionError";var ha=function(a,b,c,d){var e="Assertion failed";if(c)var e=e+(": "+c),f=d;else a&&(e+=": "+a,f=b);throw new B(""+e,f||[]);},C=function(a,b,c){a||ha("",null,b,Array.prototype.slice.call(arguments,2))},D=function(a,b,c){v(a)||ha("Expected function but got %s: %s.",[t(a),a],b,Array.prototype.slice.call(arguments,2))};var E=function(a,b,c){this.T=c;this.N=a;this.U=b;this.s=0;this.o=null};E.prototype.get=function(){var a;0<this.s?(this.s--,a=this.o,this.o=a.next,a.next=null):a=this.N();return a};E.prototype.put=function(a){this.U(a);this.s<this.T&&(this.s++,a.next=this.o,this.o=a)};var F;a:{var ia=q.navigator;if(ia){var ja=ia.userAgent;if(ja){F=ja;break a}}F=""};var ka=function(a){q.setTimeout(function(){throw a;},0)},G,la=function(){var a=q.MessageChannel;"undefined"===typeof a&&"undefined"!==typeof window&&window.postMessage&&window.addEventListener&&-1==F.indexOf("Presto")&&(a=function(){var a=document.createElement("IFRAME");a.style.display="none";a.src="";document.documentElement.appendChild(a);var b=a.contentWindow,a=b.document;a.open();a.write("");a.close();var c="callImmediate"+Math.random(),d="file:"==b.location.protocol?"*":b.location.protocol+
-"//"+b.location.host,a=w(function(a){if(("*"==d||a.origin==d)&&a.data==c)this.port1.onmessage()},this);b.addEventListener("message",a,!1);this.port1={};this.port2={postMessage:function(){b.postMessage(c,d)}}});if("undefined"!==typeof a&&-1==F.indexOf("Trident")&&-1==F.indexOf("MSIE")){var b=new a,c={},d=c;b.port1.onmessage=function(){if(void 0!==c.next){c=c.next;var a=c.G;c.G=null;a()}};return function(a){d.next={G:a};d=d.next;b.port2.postMessage(0)}}return"undefined"!==typeof document&&"onreadystatechange"in
-document.createElement("SCRIPT")?function(a){var b=document.createElement("SCRIPT");b.onreadystatechange=function(){b.onreadystatechange=null;b.parentNode.removeChild(b);b=null;a();a=null};document.documentElement.appendChild(b)}:function(a){q.setTimeout(a,0)}};var H=function(){this.v=this.f=null},ma=new E(function(){return new I},function(a){a.reset()},100);H.prototype.add=function(a,b){var c=ma.get();c.set(a,b);this.v?this.v.next=c:(C(!this.f),this.f=c);this.v=c};H.prototype.remove=function(){var a=null;this.f&&(a=this.f,this.f=this.f.next,this.f||(this.v=null),a.next=null);return a};var I=function(){this.next=this.scope=this.B=null};I.prototype.set=function(a,b){this.B=a;this.scope=b;this.next=null};
-I.prototype.reset=function(){this.next=this.scope=this.B=null};var M=function(a,b){J||na();K||(J(),K=!0);oa.add(a,b)},J,na=function(){if(-1!=String(q.Promise).indexOf("[native code]")){var a=q.Promise.resolve(void 0);J=function(){a.then(pa)}}else J=function(){var a=pa;!v(q.setImmediate)||q.Window&&q.Window.prototype&&-1==F.indexOf("Edge")&&q.Window.prototype.setImmediate==q.setImmediate?(G||(G=la()),G(a)):q.setImmediate(a)}},K=!1,oa=new H,pa=function(){for(var a;a=oa.remove();){try{a.B.call(a.scope)}catch(b){ka(b)}ma.put(a)}K=!1};var O=function(a,b){this.b=0;this.L=void 0;this.j=this.g=this.u=null;this.m=this.A=!1;if(a!=r)try{var c=this;a.call(b,function(a){N(c,2,a)},function(a){try{if(a instanceof Error)throw a;throw Error("Promise rejected.");}catch(e){}N(c,3,a)})}catch(d){N(this,3,d)}},qa=function(){this.next=this.context=this.h=this.c=this.child=null;this.w=!1};qa.prototype.reset=function(){this.context=this.h=this.c=this.child=null;this.w=!1};
-var ra=new E(function(){return new qa},function(a){a.reset()},100),sa=function(a,b,c){var d=ra.get();d.c=a;d.h=b;d.context=c;return d},ua=function(a,b,c){ta(a,b,c,null)||M(x(b,a))};O.prototype.then=function(a,b,c){null!=a&&D(a,"opt_onFulfilled should be a function.");null!=b&&D(b,"opt_onRejected should be a function. Did you pass opt_context as the second argument instead of the third?");return va(this,v(a)?a:null,v(b)?b:null,c)};O.prototype.then=O.prototype.then;O.prototype.$goog_Thenable=!0;
-O.prototype.X=function(a,b){return va(this,null,a,b)};var xa=function(a,b){a.g||2!=a.b&&3!=a.b||wa(a);C(null!=b.c);a.j?a.j.next=b:a.g=b;a.j=b},va=function(a,b,c,d){var e=sa(null,null,null);e.child=new O(function(a,g){e.c=b?function(c){try{var e=b.call(d,c);a(e)}catch(L){g(L)}}:a;e.h=c?function(b){try{var e=c.call(d,b);a(e)}catch(L){g(L)}}:g});e.child.u=a;xa(a,e);return e.child};O.prototype.Y=function(a){C(1==this.b);this.b=0;N(this,2,a)};O.prototype.Z=function(a){C(1==this.b);this.b=0;N(this,3,a)};
-var N=function(a,b,c){0==a.b&&(a===c&&(b=3,c=new TypeError("Promise cannot resolve to itself")),a.b=1,ta(c,a.Y,a.Z,a)||(a.L=c,a.b=b,a.u=null,wa(a),3!=b||ya(a,c)))},ta=function(a,b,c,d){if(a instanceof O)return null!=b&&D(b,"opt_onFulfilled should be a function."),null!=c&&D(c,"opt_onRejected should be a function. Did you pass opt_context as the second argument instead of the third?"),xa(a,sa(b||r,c||null,d)),!0;var e;if(a)try{e=!!a.$goog_Thenable}catch(g){e=!1}else e=!1;if(e)return a.then(b,c,d),
-!0;e=typeof a;if("object"==e&&null!=a||"function"==e)try{var f=a.then;if(v(f))return za(a,f,b,c,d),!0}catch(g){return c.call(d,g),!0}return!1},za=function(a,b,c,d,e){var f=!1,g=function(a){f||(f=!0,c.call(e,a))},k=function(a){f||(f=!0,d.call(e,a))};try{b.call(a,g,k)}catch(p){k(p)}},wa=function(a){a.A||(a.A=!0,M(a.P,a))},Aa=function(a){var b=null;a.g&&(b=a.g,a.g=b.next,b.next=null);a.g||(a.j=null);null!=b&&C(null!=b.c);return b};
-O.prototype.P=function(){for(var a;a=Aa(this);){var b=this.b,c=this.L;if(3==b&&a.h&&!a.w){var d;for(d=this;d&&d.m;d=d.u)d.m=!1}if(a.child)a.child.u=null,Ba(a,b,c);else try{a.w?a.c.call(a.context):Ba(a,b,c)}catch(e){Ca.call(null,e)}ra.put(a)}this.A=!1};var Ba=function(a,b,c){2==b?a.c.call(a.context,c):a.h&&a.h.call(a.context,c)},ya=function(a,b){a.m=!0;M(function(){a.m&&Ca.call(null,b)})},Ca=ka;function P(a,b){if(!(b instanceof Object))return b;switch(b.constructor){case Date:return new Date(b.getTime());case Object:void 0===a&&(a={});break;case Array:a=[];break;default:return b}for(var c in b)b.hasOwnProperty(c)&&(a[c]=P(a[c],b[c]));return a};O.all=function(a){return new O(function(b,c){var d=a.length,e=[];if(d)for(var f=function(a,c){d--;e[a]=c;0==d&&b(e)},g=function(a){c(a)},k=0,p;k<a.length;k++)p=a[k],ua(p,x(f,k),g);else b(e)})};O.resolve=function(a){if(a instanceof O)return a;var b=new O(r);N(b,2,a);return b};O.reject=function(a){return new O(function(b,c){c(a)})};O.prototype["catch"]=O.prototype.X;var Q=O;"undefined"!==typeof Promise&&(Q=Promise);var Da=Q;function Ea(a,b){a=new R(a,b);return a.subscribe.bind(a)}var R=function(a,b){var c=this;this.a=[];this.K=0;this.task=Da.resolve();this.l=!1;this.D=b;this.task.then(function(){a(c)}).catch(function(a){c.error(a)})};R.prototype.next=function(a){S(this,function(b){b.next(a)})};R.prototype.error=function(a){S(this,function(b){b.error(a)});this.close(a)};R.prototype.complete=function(){S(this,function(a){a.complete()});this.close()};
-R.prototype.subscribe=function(a,b,c){var d=this,e;if(void 0===a&&void 0===b&&void 0===c)throw Error("Missing Observer.");e=Fa(a)?a:{next:a,error:b,complete:c};void 0===e.next&&(e.next=T);void 0===e.error&&(e.error=T);void 0===e.complete&&(e.complete=T);a=this.$.bind(this,this.a.length);this.l&&this.task.then(function(){try{d.H?e.error(d.H):e.complete()}catch(f){}});this.a.push(e);return a};
-R.prototype.$=function(a){void 0!==this.a&&void 0!==this.a[a]&&(delete this.a[a],--this.K,0===this.K&&void 0!==this.D&&this.D(this))};var S=function(a,b){if(!a.l)for(var c=0;c<a.a.length;c++)Ga(a,c,b)},Ga=function(a,b,c){a.task.then(function(){if(void 0!==a.a&&void 0!==a.a[b])try{c(a.a[b])}catch(d){"undefined"!==typeof console&&console.error&&console.error(d)}})};R.prototype.close=function(a){var b=this;this.l||(this.l=!0,void 0!==a&&(this.H=a),this.task.then(function(){b.a=void 0;b.D=void 0}))};
-function Fa(a){if("object"!==typeof a||null===a)return!1;var b;b=["next","error","complete"];n();var c=b[Symbol.iterator];b=c?c.call(b):m(b);for(c=b.next();!c.done;c=b.next())if(c=c.value,c in a&&"function"===typeof a[c])return!0;return!1}function T(){};var Ha=Error.captureStackTrace,V=function(a,b){this.code=a;this.message=b;if(Ha)Ha(this,U.prototype.create);else{var c=Error.apply(this,arguments);this.name="FirebaseError";Object.defineProperty(this,"stack",{get:function(){return c.stack}})}};V.prototype=Object.create(Error.prototype);V.prototype.constructor=V;V.prototype.name="FirebaseError";var U=function(a,b,c){this.V=a;this.W=b;this.O=c;this.pattern=/\{\$([^}]+)}/g};
-U.prototype.create=function(a,b){void 0===b&&(b={});var c=this.O[a];a=this.V+"/"+a;var c=void 0===c?"Error":c.replace(this.pattern,function(a,c){a=b[c];return void 0!==a?a.toString():"<"+c+"?>"}),c=this.W+": "+c+" ("+a+").",c=new V(a,c),d;for(d in b)b.hasOwnProperty(d)&&"_"!==d.slice(-1)&&(c[d]=b[d]);return c};var W=Q,X=function(a,b,c){var d=this;this.I=c;this.J=!1;this.i={};this.C=b;this.F=P(void 0,a);a="serviceAccount"in this.F;("credential"in this.F||a)&&"undefined"!==typeof console&&console.log("The '"+(a?"serviceAccount":"credential")+"' property specified in the first argument to initializeApp() is deprecated and will be removed in the next major version. You should instead use the 'firebase-admin' package. See https://firebase.google.com/docs/admin/setup for details on how to get started.");Object.keys(c.INTERNAL.factories).forEach(function(a){var b=
-c.INTERNAL.useAsService(d,a);null!==b&&(b=d.S.bind(d,b),d[a]=b)})};X.prototype.delete=function(){var a=this;return(new W(function(b){Y(a);b()})).then(function(){a.I.INTERNAL.removeApp(a.C);return W.all(Object.keys(a.i).map(function(b){return a.i[b].INTERNAL.delete()}))}).then(function(){a.J=!0;a.i={}})};X.prototype.S=function(a){Y(this);void 0===this.i[a]&&(this.i[a]=this.I.INTERNAL.factories[a](this,this.R.bind(this)));return this.i[a]};X.prototype.R=function(a){P(this,a)};
-var Y=function(a){a.J&&Z("app-deleted",{name:a.C})};h.Object.defineProperties(X.prototype,{name:{configurable:!0,enumerable:!0,get:function(){Y(this);return this.C}},options:{configurable:!0,enumerable:!0,get:function(){Y(this);return this.F}}});X.prototype.name&&X.prototype.options||X.prototype.delete||console.log("dc");
-function Ia(){function a(a){a=a||"[DEFAULT]";var b=d[a];void 0===b&&Z("no-app",{name:a});return b}function b(a,b){Object.keys(e).forEach(function(d){d=c(a,d);if(null!==d&&f[d])f[d](b,a)})}function c(a,b){if("serverAuth"===b)return null;var c=b;a=a.options;"auth"===b&&(a.serviceAccount||a.credential)&&(c="serverAuth","serverAuth"in e||Z("sa-not-supported"));return c}var d={},e={},f={},g={__esModule:!0,initializeApp:function(a,c){void 0===c?c="[DEFAULT]":"string"===typeof c&&""!==c||Z("bad-app-name",
-{name:c+""});void 0!==d[c]&&Z("duplicate-app",{name:c});a=new X(a,c,g);d[c]=a;b(a,"create");void 0!=a.INTERNAL&&void 0!=a.INTERNAL.getToken||P(a,{INTERNAL:{getToken:function(){return W.resolve(null)},addAuthTokenListener:function(){},removeAuthTokenListener:function(){}}});return a},app:a,apps:null,Promise:W,SDK_VERSION:"0.0.0",INTERNAL:{registerService:function(b,c,d,u){e[b]&&Z("duplicate-service",{name:b});e[b]=c;u&&(f[b]=u);c=function(c){void 0===c&&(c=a());return c[b]()};void 0!==d&&P(c,d);return g[b]=
-c},createFirebaseNamespace:Ia,extendNamespace:function(a){P(g,a)},createSubscribe:Ea,ErrorFactory:U,removeApp:function(a){b(d[a],"delete");delete d[a]},factories:e,useAsService:c,Promise:O,deepExtend:P}};g["default"]=g;Object.defineProperty(g,"apps",{get:function(){return Object.keys(d).map(function(a){return d[a]})}});a.App=X;return g}function Z(a,b){throw Ja.create(a,b);}
-var Ja=new U("app","Firebase",{"no-app":"No Firebase App '{$name}' has been created - call Firebase App.initializeApp()","bad-app-name":"Illegal App name: '{$name}","duplicate-app":"Firebase App named '{$name}' already exists","app-deleted":"Firebase App named '{$name}' already deleted","duplicate-service":"Firebase service named '{$name}' already registered","sa-not-supported":"Initializing the Firebase SDK with a service account is only allowed in a Node.js environment. On client devices, you should instead initialize the SDK with an api key and auth domain"});"undefined"!==typeof firebase&&(firebase=Ia()); }).call(this);
-firebase.SDK_VERSION = "3.6.9";
-return firebase;}).call(typeof global !== undefined ? global : typeof self !== undefined ? self : typeof window !== undefined ? window : {});
-module.exports = firebase;
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -4495,6 +4456,45 @@ module.exports = function() {
 	return list;
 };
 
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
+/*! @license Firebase v3.6.9
+    Build: 3.6.9-rc.1
+    Terms: https://firebase.google.com/terms/ */
+var firebase = null; (function() { var aa="function"==typeof Object.defineProperties?Object.defineProperty:function(a,b,c){if(c.get||c.set)throw new TypeError("ES3 does not support getters and setters.");a!=Array.prototype&&a!=Object.prototype&&(a[b]=c.value)},h="undefined"!=typeof window&&window===this?this:"undefined"!=typeof global&&null!=global?global:this,l=function(){l=function(){};h.Symbol||(h.Symbol=ba)},ca=0,ba=function(a){return"jscomp_symbol_"+(a||"")+ca++},n=function(){l();var a=h.Symbol.iterator;a||(a=h.Symbol.iterator=
+h.Symbol("iterator"));"function"!=typeof Array.prototype[a]&&aa(Array.prototype,a,{configurable:!0,writable:!0,value:function(){return m(this)}});n=function(){}},m=function(a){var b=0;return da(function(){return b<a.length?{done:!1,value:a[b++]}:{done:!0}})},da=function(a){n();a={next:a};a[h.Symbol.iterator]=function(){return this};return a},q=this,r=function(){},t=function(a){var b=typeof a;if("object"==b)if(a){if(a instanceof Array)return"array";if(a instanceof Object)return b;var c=Object.prototype.toString.call(a);
+if("[object Window]"==c)return"object";if("[object Array]"==c||"number"==typeof a.length&&"undefined"!=typeof a.splice&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("splice"))return"array";if("[object Function]"==c||"undefined"!=typeof a.call&&"undefined"!=typeof a.propertyIsEnumerable&&!a.propertyIsEnumerable("call"))return"function"}else return"null";else if("function"==b&&"undefined"==typeof a.call)return"object";return b},v=function(a){return"function"==t(a)},ea=function(a,
+b,c){return a.call.apply(a.bind,arguments)},fa=function(a,b,c){if(!a)throw Error();if(2<arguments.length){var d=Array.prototype.slice.call(arguments,2);return function(){var c=Array.prototype.slice.call(arguments);Array.prototype.unshift.apply(c,d);return a.apply(b,c)}}return function(){return a.apply(b,arguments)}},w=function(a,b,c){w=Function.prototype.bind&&-1!=Function.prototype.bind.toString().indexOf("native code")?ea:fa;return w.apply(null,arguments)},x=function(a,b){var c=Array.prototype.slice.call(arguments,
+1);return function(){var b=c.slice();b.push.apply(b,arguments);return a.apply(this,b)}},y=function(a,b){function c(){}c.prototype=b.prototype;a.ba=b.prototype;a.prototype=new c;a.prototype.constructor=a;a.aa=function(a,c,f){for(var d=Array(arguments.length-2),e=2;e<arguments.length;e++)d[e-2]=arguments[e];return b.prototype[c].apply(a,d)}};var z;z="undefined"!==typeof window?window:"undefined"!==typeof self?self:global;function __extends(a,b){function c(){this.constructor=a}for(var d in b)b.hasOwnProperty(d)&&(a[d]=b[d]);a.prototype=null===b?Object.create(b):(c.prototype=b.prototype,new c)}
+function __decorate(a,b,c,d){var e=arguments.length,f=3>e?b:null===d?d=Object.getOwnPropertyDescriptor(b,c):d,g;g=z.Reflect;if("object"===typeof g&&"function"===typeof g.decorate)f=g.decorate(a,b,c,d);else for(var k=a.length-1;0<=k;k--)if(g=a[k])f=(3>e?g(f):3<e?g(b,c,f):g(b,c))||f;return 3<e&&f&&Object.defineProperty(b,c,f),f}function __metadata(a,b){var c=z.Reflect;if("object"===typeof c&&"function"===typeof c.metadata)return c.metadata(a,b)}
+var __param=function(a,b){return function(c,d){b(c,d,a)}},__awaiter=function(a,b,c,d){return new (c||(c=Promise))(function(e,f){function g(a){try{p(d.next(a))}catch(u){f(u)}}function k(a){try{p(d.throw(a))}catch(u){f(u)}}function p(a){a.done?e(a.value):(new c(function(b){b(a.value)})).then(g,k)}p((d=d.apply(a,b)).next())})};"undefined"!==typeof z.M&&z.M||(z.__extends=__extends,z.__decorate=__decorate,z.__metadata=__metadata,z.__param=__param,z.__awaiter=__awaiter);var A=function(a){if(Error.captureStackTrace)Error.captureStackTrace(this,A);else{var b=Error().stack;b&&(this.stack=b)}a&&(this.message=String(a))};y(A,Error);A.prototype.name="CustomError";var ga=function(a,b){for(var c=a.split("%s"),d="",e=Array.prototype.slice.call(arguments,1);e.length&&1<c.length;)d+=c.shift()+e.shift();return d+c.join("%s")};var B=function(a,b){b.unshift(a);A.call(this,ga.apply(null,b));b.shift()};y(B,A);B.prototype.name="AssertionError";var ha=function(a,b,c,d){var e="Assertion failed";if(c)var e=e+(": "+c),f=d;else a&&(e+=": "+a,f=b);throw new B(""+e,f||[]);},C=function(a,b,c){a||ha("",null,b,Array.prototype.slice.call(arguments,2))},D=function(a,b,c){v(a)||ha("Expected function but got %s: %s.",[t(a),a],b,Array.prototype.slice.call(arguments,2))};var E=function(a,b,c){this.T=c;this.N=a;this.U=b;this.s=0;this.o=null};E.prototype.get=function(){var a;0<this.s?(this.s--,a=this.o,this.o=a.next,a.next=null):a=this.N();return a};E.prototype.put=function(a){this.U(a);this.s<this.T&&(this.s++,a.next=this.o,this.o=a)};var F;a:{var ia=q.navigator;if(ia){var ja=ia.userAgent;if(ja){F=ja;break a}}F=""};var ka=function(a){q.setTimeout(function(){throw a;},0)},G,la=function(){var a=q.MessageChannel;"undefined"===typeof a&&"undefined"!==typeof window&&window.postMessage&&window.addEventListener&&-1==F.indexOf("Presto")&&(a=function(){var a=document.createElement("IFRAME");a.style.display="none";a.src="";document.documentElement.appendChild(a);var b=a.contentWindow,a=b.document;a.open();a.write("");a.close();var c="callImmediate"+Math.random(),d="file:"==b.location.protocol?"*":b.location.protocol+
+"//"+b.location.host,a=w(function(a){if(("*"==d||a.origin==d)&&a.data==c)this.port1.onmessage()},this);b.addEventListener("message",a,!1);this.port1={};this.port2={postMessage:function(){b.postMessage(c,d)}}});if("undefined"!==typeof a&&-1==F.indexOf("Trident")&&-1==F.indexOf("MSIE")){var b=new a,c={},d=c;b.port1.onmessage=function(){if(void 0!==c.next){c=c.next;var a=c.G;c.G=null;a()}};return function(a){d.next={G:a};d=d.next;b.port2.postMessage(0)}}return"undefined"!==typeof document&&"onreadystatechange"in
+document.createElement("SCRIPT")?function(a){var b=document.createElement("SCRIPT");b.onreadystatechange=function(){b.onreadystatechange=null;b.parentNode.removeChild(b);b=null;a();a=null};document.documentElement.appendChild(b)}:function(a){q.setTimeout(a,0)}};var H=function(){this.v=this.f=null},ma=new E(function(){return new I},function(a){a.reset()},100);H.prototype.add=function(a,b){var c=ma.get();c.set(a,b);this.v?this.v.next=c:(C(!this.f),this.f=c);this.v=c};H.prototype.remove=function(){var a=null;this.f&&(a=this.f,this.f=this.f.next,this.f||(this.v=null),a.next=null);return a};var I=function(){this.next=this.scope=this.B=null};I.prototype.set=function(a,b){this.B=a;this.scope=b;this.next=null};
+I.prototype.reset=function(){this.next=this.scope=this.B=null};var M=function(a,b){J||na();K||(J(),K=!0);oa.add(a,b)},J,na=function(){if(-1!=String(q.Promise).indexOf("[native code]")){var a=q.Promise.resolve(void 0);J=function(){a.then(pa)}}else J=function(){var a=pa;!v(q.setImmediate)||q.Window&&q.Window.prototype&&-1==F.indexOf("Edge")&&q.Window.prototype.setImmediate==q.setImmediate?(G||(G=la()),G(a)):q.setImmediate(a)}},K=!1,oa=new H,pa=function(){for(var a;a=oa.remove();){try{a.B.call(a.scope)}catch(b){ka(b)}ma.put(a)}K=!1};var O=function(a,b){this.b=0;this.L=void 0;this.j=this.g=this.u=null;this.m=this.A=!1;if(a!=r)try{var c=this;a.call(b,function(a){N(c,2,a)},function(a){try{if(a instanceof Error)throw a;throw Error("Promise rejected.");}catch(e){}N(c,3,a)})}catch(d){N(this,3,d)}},qa=function(){this.next=this.context=this.h=this.c=this.child=null;this.w=!1};qa.prototype.reset=function(){this.context=this.h=this.c=this.child=null;this.w=!1};
+var ra=new E(function(){return new qa},function(a){a.reset()},100),sa=function(a,b,c){var d=ra.get();d.c=a;d.h=b;d.context=c;return d},ua=function(a,b,c){ta(a,b,c,null)||M(x(b,a))};O.prototype.then=function(a,b,c){null!=a&&D(a,"opt_onFulfilled should be a function.");null!=b&&D(b,"opt_onRejected should be a function. Did you pass opt_context as the second argument instead of the third?");return va(this,v(a)?a:null,v(b)?b:null,c)};O.prototype.then=O.prototype.then;O.prototype.$goog_Thenable=!0;
+O.prototype.X=function(a,b){return va(this,null,a,b)};var xa=function(a,b){a.g||2!=a.b&&3!=a.b||wa(a);C(null!=b.c);a.j?a.j.next=b:a.g=b;a.j=b},va=function(a,b,c,d){var e=sa(null,null,null);e.child=new O(function(a,g){e.c=b?function(c){try{var e=b.call(d,c);a(e)}catch(L){g(L)}}:a;e.h=c?function(b){try{var e=c.call(d,b);a(e)}catch(L){g(L)}}:g});e.child.u=a;xa(a,e);return e.child};O.prototype.Y=function(a){C(1==this.b);this.b=0;N(this,2,a)};O.prototype.Z=function(a){C(1==this.b);this.b=0;N(this,3,a)};
+var N=function(a,b,c){0==a.b&&(a===c&&(b=3,c=new TypeError("Promise cannot resolve to itself")),a.b=1,ta(c,a.Y,a.Z,a)||(a.L=c,a.b=b,a.u=null,wa(a),3!=b||ya(a,c)))},ta=function(a,b,c,d){if(a instanceof O)return null!=b&&D(b,"opt_onFulfilled should be a function."),null!=c&&D(c,"opt_onRejected should be a function. Did you pass opt_context as the second argument instead of the third?"),xa(a,sa(b||r,c||null,d)),!0;var e;if(a)try{e=!!a.$goog_Thenable}catch(g){e=!1}else e=!1;if(e)return a.then(b,c,d),
+!0;e=typeof a;if("object"==e&&null!=a||"function"==e)try{var f=a.then;if(v(f))return za(a,f,b,c,d),!0}catch(g){return c.call(d,g),!0}return!1},za=function(a,b,c,d,e){var f=!1,g=function(a){f||(f=!0,c.call(e,a))},k=function(a){f||(f=!0,d.call(e,a))};try{b.call(a,g,k)}catch(p){k(p)}},wa=function(a){a.A||(a.A=!0,M(a.P,a))},Aa=function(a){var b=null;a.g&&(b=a.g,a.g=b.next,b.next=null);a.g||(a.j=null);null!=b&&C(null!=b.c);return b};
+O.prototype.P=function(){for(var a;a=Aa(this);){var b=this.b,c=this.L;if(3==b&&a.h&&!a.w){var d;for(d=this;d&&d.m;d=d.u)d.m=!1}if(a.child)a.child.u=null,Ba(a,b,c);else try{a.w?a.c.call(a.context):Ba(a,b,c)}catch(e){Ca.call(null,e)}ra.put(a)}this.A=!1};var Ba=function(a,b,c){2==b?a.c.call(a.context,c):a.h&&a.h.call(a.context,c)},ya=function(a,b){a.m=!0;M(function(){a.m&&Ca.call(null,b)})},Ca=ka;function P(a,b){if(!(b instanceof Object))return b;switch(b.constructor){case Date:return new Date(b.getTime());case Object:void 0===a&&(a={});break;case Array:a=[];break;default:return b}for(var c in b)b.hasOwnProperty(c)&&(a[c]=P(a[c],b[c]));return a};O.all=function(a){return new O(function(b,c){var d=a.length,e=[];if(d)for(var f=function(a,c){d--;e[a]=c;0==d&&b(e)},g=function(a){c(a)},k=0,p;k<a.length;k++)p=a[k],ua(p,x(f,k),g);else b(e)})};O.resolve=function(a){if(a instanceof O)return a;var b=new O(r);N(b,2,a);return b};O.reject=function(a){return new O(function(b,c){c(a)})};O.prototype["catch"]=O.prototype.X;var Q=O;"undefined"!==typeof Promise&&(Q=Promise);var Da=Q;function Ea(a,b){a=new R(a,b);return a.subscribe.bind(a)}var R=function(a,b){var c=this;this.a=[];this.K=0;this.task=Da.resolve();this.l=!1;this.D=b;this.task.then(function(){a(c)}).catch(function(a){c.error(a)})};R.prototype.next=function(a){S(this,function(b){b.next(a)})};R.prototype.error=function(a){S(this,function(b){b.error(a)});this.close(a)};R.prototype.complete=function(){S(this,function(a){a.complete()});this.close()};
+R.prototype.subscribe=function(a,b,c){var d=this,e;if(void 0===a&&void 0===b&&void 0===c)throw Error("Missing Observer.");e=Fa(a)?a:{next:a,error:b,complete:c};void 0===e.next&&(e.next=T);void 0===e.error&&(e.error=T);void 0===e.complete&&(e.complete=T);a=this.$.bind(this,this.a.length);this.l&&this.task.then(function(){try{d.H?e.error(d.H):e.complete()}catch(f){}});this.a.push(e);return a};
+R.prototype.$=function(a){void 0!==this.a&&void 0!==this.a[a]&&(delete this.a[a],--this.K,0===this.K&&void 0!==this.D&&this.D(this))};var S=function(a,b){if(!a.l)for(var c=0;c<a.a.length;c++)Ga(a,c,b)},Ga=function(a,b,c){a.task.then(function(){if(void 0!==a.a&&void 0!==a.a[b])try{c(a.a[b])}catch(d){"undefined"!==typeof console&&console.error&&console.error(d)}})};R.prototype.close=function(a){var b=this;this.l||(this.l=!0,void 0!==a&&(this.H=a),this.task.then(function(){b.a=void 0;b.D=void 0}))};
+function Fa(a){if("object"!==typeof a||null===a)return!1;var b;b=["next","error","complete"];n();var c=b[Symbol.iterator];b=c?c.call(b):m(b);for(c=b.next();!c.done;c=b.next())if(c=c.value,c in a&&"function"===typeof a[c])return!0;return!1}function T(){};var Ha=Error.captureStackTrace,V=function(a,b){this.code=a;this.message=b;if(Ha)Ha(this,U.prototype.create);else{var c=Error.apply(this,arguments);this.name="FirebaseError";Object.defineProperty(this,"stack",{get:function(){return c.stack}})}};V.prototype=Object.create(Error.prototype);V.prototype.constructor=V;V.prototype.name="FirebaseError";var U=function(a,b,c){this.V=a;this.W=b;this.O=c;this.pattern=/\{\$([^}]+)}/g};
+U.prototype.create=function(a,b){void 0===b&&(b={});var c=this.O[a];a=this.V+"/"+a;var c=void 0===c?"Error":c.replace(this.pattern,function(a,c){a=b[c];return void 0!==a?a.toString():"<"+c+"?>"}),c=this.W+": "+c+" ("+a+").",c=new V(a,c),d;for(d in b)b.hasOwnProperty(d)&&"_"!==d.slice(-1)&&(c[d]=b[d]);return c};var W=Q,X=function(a,b,c){var d=this;this.I=c;this.J=!1;this.i={};this.C=b;this.F=P(void 0,a);a="serviceAccount"in this.F;("credential"in this.F||a)&&"undefined"!==typeof console&&console.log("The '"+(a?"serviceAccount":"credential")+"' property specified in the first argument to initializeApp() is deprecated and will be removed in the next major version. You should instead use the 'firebase-admin' package. See https://firebase.google.com/docs/admin/setup for details on how to get started.");Object.keys(c.INTERNAL.factories).forEach(function(a){var b=
+c.INTERNAL.useAsService(d,a);null!==b&&(b=d.S.bind(d,b),d[a]=b)})};X.prototype.delete=function(){var a=this;return(new W(function(b){Y(a);b()})).then(function(){a.I.INTERNAL.removeApp(a.C);return W.all(Object.keys(a.i).map(function(b){return a.i[b].INTERNAL.delete()}))}).then(function(){a.J=!0;a.i={}})};X.prototype.S=function(a){Y(this);void 0===this.i[a]&&(this.i[a]=this.I.INTERNAL.factories[a](this,this.R.bind(this)));return this.i[a]};X.prototype.R=function(a){P(this,a)};
+var Y=function(a){a.J&&Z("app-deleted",{name:a.C})};h.Object.defineProperties(X.prototype,{name:{configurable:!0,enumerable:!0,get:function(){Y(this);return this.C}},options:{configurable:!0,enumerable:!0,get:function(){Y(this);return this.F}}});X.prototype.name&&X.prototype.options||X.prototype.delete||console.log("dc");
+function Ia(){function a(a){a=a||"[DEFAULT]";var b=d[a];void 0===b&&Z("no-app",{name:a});return b}function b(a,b){Object.keys(e).forEach(function(d){d=c(a,d);if(null!==d&&f[d])f[d](b,a)})}function c(a,b){if("serverAuth"===b)return null;var c=b;a=a.options;"auth"===b&&(a.serviceAccount||a.credential)&&(c="serverAuth","serverAuth"in e||Z("sa-not-supported"));return c}var d={},e={},f={},g={__esModule:!0,initializeApp:function(a,c){void 0===c?c="[DEFAULT]":"string"===typeof c&&""!==c||Z("bad-app-name",
+{name:c+""});void 0!==d[c]&&Z("duplicate-app",{name:c});a=new X(a,c,g);d[c]=a;b(a,"create");void 0!=a.INTERNAL&&void 0!=a.INTERNAL.getToken||P(a,{INTERNAL:{getToken:function(){return W.resolve(null)},addAuthTokenListener:function(){},removeAuthTokenListener:function(){}}});return a},app:a,apps:null,Promise:W,SDK_VERSION:"0.0.0",INTERNAL:{registerService:function(b,c,d,u){e[b]&&Z("duplicate-service",{name:b});e[b]=c;u&&(f[b]=u);c=function(c){void 0===c&&(c=a());return c[b]()};void 0!==d&&P(c,d);return g[b]=
+c},createFirebaseNamespace:Ia,extendNamespace:function(a){P(g,a)},createSubscribe:Ea,ErrorFactory:U,removeApp:function(a){b(d[a],"delete");delete d[a]},factories:e,useAsService:c,Promise:O,deepExtend:P}};g["default"]=g;Object.defineProperty(g,"apps",{get:function(){return Object.keys(d).map(function(a){return d[a]})}});a.App=X;return g}function Z(a,b){throw Ja.create(a,b);}
+var Ja=new U("app","Firebase",{"no-app":"No Firebase App '{$name}' has been created - call Firebase App.initializeApp()","bad-app-name":"Illegal App name: '{$name}","duplicate-app":"Firebase App named '{$name}' already exists","app-deleted":"Firebase App named '{$name}' already deleted","duplicate-service":"Firebase service named '{$name}' already registered","sa-not-supported":"Initializing the Firebase SDK with a service account is only allowed in a Node.js environment. On client devices, you should instead initialize the SDK with an api key and auth domain"});"undefined"!==typeof firebase&&(firebase=Ia()); }).call(this);
+firebase.SDK_VERSION = "3.6.9";
+return firebase;}).call(typeof global !== undefined ? global : typeof self !== undefined ? self : typeof window !== undefined ? window : {});
+module.exports = firebase;
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 4 */
@@ -4750,6 +4750,34 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _firebase = __webpack_require__(151);
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Setup Firebase
+var config = {
+  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
+  authDomain: "noted-b5ad0.firebaseapp.com",
+  databaseURL: "https://noted-b5ad0.firebaseio.com"
+};
+
+var firebase = _firebase2.default.initializeApp(config);
+var db = firebase.database();
+
+module.exports = {
+  firebase: firebase,
+  db: db
+};
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13325,35 +13353,6 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(117), __webpack_require__(1)))
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _firebase = __webpack_require__(149);
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Setup Firebase
-var config = {
-  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
-  authDomain: "noted-b5ad0.firebaseapp.com",
-  databaseURL: "https://noted-b5ad0.firebaseio.com",
-  messagingSenderId: "398915689559"
-};
-
-var firebase = _firebase2.default.initializeApp(config);
-var db = firebase.database();
-
-module.exports = {
-  firebase: firebase,
-  db: db
-};
-
-/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -13371,15 +13370,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(126);
+var _stringify = __webpack_require__(127);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _vue = __webpack_require__(5);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(165);
+var _vuex = __webpack_require__(170);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
@@ -23947,11 +23946,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _vue = __webpack_require__(5);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(164);
+var _vueRouter = __webpack_require__(169);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
@@ -23959,15 +23958,15 @@ var _auth = __webpack_require__(121);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _Login = __webpack_require__(161);
+var _Login = __webpack_require__(165);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Signup = __webpack_require__(163);
+var _Signup = __webpack_require__(166);
 
 var _Signup2 = _interopRequireDefault(_Signup);
 
-var _Notes = __webpack_require__(162);
+var _Notes = __webpack_require__(168);
 
 var _Notes2 = _interopRequireDefault(_Notes);
 
@@ -24004,9 +24003,9 @@ exports.default = router;
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(154)
+__webpack_require__(157)
 __vue_script__ = __webpack_require__(122)
-__vue_template__ = __webpack_require__(157)
+__vue_template__ = __webpack_require__(160)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -24436,7 +24435,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(6);
+var _firebaseApp = __webpack_require__(5);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24560,221 +24559,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _extends2 = __webpack_require__(128);
-
-var _extends3 = _interopRequireDefault(_extends2);
-
-var _firebaseApp = __webpack_require__(6);
-
-var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
-
-var _moment = __webpack_require__(0);
-
-var _moment2 = _interopRequireDefault(_moment);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// <template>
-//   <div class="section">
-//     <div class="container">
-//
-//       <div class="content-wrapper">
-//
-//         <div class="box">
-//           <h3 class="title">Notes</h3>
-//
-//           <a class="new-note" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-//
-//           <div class="note-editor" v-if="editingNote">
-//             <div class="control">
-//               <label class="label">Title</label>
-//               <input class="input" v-model="editingNote.title" />
-//             </div>
-//
-//             <div class="control">
-//               <label class="label">Note</label>
-//               <textarea class="textarea" v-model="editingNote.content"></textarea>
-//             </div>
-//
-//             <div class="control is-grouped">
-//               <p class="control">
-//                 <button v-if="editingNote.new" class="button is-primary" @click="addNote()">Save</button>
-//                 <button v-else class="button is-primary" @click="updateNote()">Save</button>
-//               </p>
-//               <p class="control">
-//                 <button @click="closeEditor" class="button is-link">Cancel</button>
-//               </p>
-//             </div>
-//           </div>
-//
-//           <div class="notes-list" v-else>
-//             <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
-//               <h4 class="title is-4">{{note.title}}</h4>
-//               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
-//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
-//             </div>
-//           </div><!-- /.notes-list -->
-//
-//         </div><!-- /.box -->
-//
-//         <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
-//
-//       </div><!-- /.content-wrapper -->
-//
-//     </div><!-- /.container -->
-//   </div><!-- /.section -->
-// </template>
-//
-// <script>
-var notesRef = _firebaseApp2.default.db.ref('notes');
-
-exports.default = {
-  data: function data() {
-    return {
-      editingNote: false
-    };
-  },
-
-  computed: {
-    uid: function uid() {
-      return this.$store.getters.uid;
-    }
-  },
-  firebase: function firebase() {
-    var userId = this.uid;
-    return {
-      notes: _firebaseApp2.default.db.ref('notes').orderByChild(userId).equalTo(true)
-    };
-  },
-
-  methods: {
-    timeAgo: function timeAgo(date) {
-      var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
-      return timePassed === 'Invalid date' ? 'A long, long time ago...' : timePassed;
-    },
-    newNote: function newNote() {
-      this.editingNote = {
-        new: true,
-        title: '',
-        content: ''
-      };
-    },
-    addNote: function addNote() {
-      var newNote = (0, _extends3.default)({}, this.editingNote);
-      newNote[this.uid] = true;
-      newNote.dateCreated = (0, _moment2.default)().toString();
-
-      // Remove the 'new' key
-      delete newNote.new;
-
-      // Push note into database
-      notesRef.push(newNote);
-
-      this.closeEditor();
-    },
-    deleteNote: function deleteNote(note) {
-      // Remove note from firebase
-      notesRef.child(note['.key']).remove();
-    },
-    editNote: function editNote(note) {
-      // Push selected note into state
-      this.editingNote = note;
-    },
-    updateNote: function updateNote() {
-      // Update note in DB then clear the state
-      notesRef.child(this.editingNote['.key']).update({
-        content: this.editingNote.content,
-        title: this.editingNote.title
-      });
-
-      this.closeEditor();
-    },
-    closeEditor: function closeEditor() {
-      // Close editor
-      this.editingNote = false;
-    }
-  }
-};
-// </script>
-//
-// <style>
-//   .section {
-//     width: 100%;
-//   }
-//
-//   .container {
-//     display: flex;
-//     align-items: center;
-//     justify-content: center;
-//   }
-//
-//   .box {
-//     position: relative;
-//     width: 100%;
-//   }
-//
-//   .textarea {
-//     width: 100%;
-//   }
-//
-//   .new-note {
-//     position: absolute;
-//     top: 1.25rem;
-//     right: 1.25rem;
-//   }
-//
-//   .logout-link {
-//     position: absolute;
-//     bottom: -5px;
-//     right: 0;
-//   }
-//
-//   .content-wrapper {
-//     position: relative;
-//   }
-//
-//   .note-container {
-//     height: 50px;
-//     border-bottom: 1px solid rgba(10,10,10,0.08);
-//     position: relative;
-//     margin: 20px 0px;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//   }
-//
-//   div .delete-note {
-//     /* Hide the delete button by default */
-//     visibility: hidden;
-//     position: absolute;
-//     right: 0;
-//     bottom: 50%;
-//   }
-//
-//   div:hover > .delete-note {
-//     /* Show the delete button */
-//     visibility: visible;
-//   }
-//
-//   @media(min-width: 769px) {
-//     .content-wrapper {
-//       width: 35%;
-//     }
-//   }
-// </style>
-
-/***/ }),
-/* 125 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _firebaseApp = __webpack_require__(6);
+var _firebaseApp = __webpack_require__(5);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24888,10 +24673,307 @@ exports.default = {
 // <script>
 
 /***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends2 = __webpack_require__(129);
+
+var _extends3 = _interopRequireDefault(_extends2);
+
+var _firebaseApp = __webpack_require__(5);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// <template>
+//   <div>
+//     <div class="note-editor" v-if="editingNote">
+//       <div class="control">
+//         <label class="label">Title</label>
+//         <input class="input" v-model="editingNote.title" />
+//       </div>
+//
+//       <div class="control">
+//         <label class="label">Note</label>
+//         <textarea class="textarea" v-model="editingNote.content"></textarea>
+//       </div>
+//
+//       <div class="control is-grouped">
+//         <p class="control">
+//           <button v-if="editingNote.new" class="button is-primary" @click="addNote()">Save</button>
+//           <button v-else class="button is-primary" @click="updateNote()">Save</button>
+//         </p>
+//         <p class="control">
+//           <button @click="closeEditor" class="button is-link">Cancel</button>
+//         </p>
+//       </div>
+//     </div>
+//   </div>
+// </template>
+//
+// <script>
+exports.default = {
+  props: ['note'],
+  data: function data() {
+    return {
+      editingNote: this.note
+    };
+  },
+
+  computed: {
+    uid: function uid() {
+      return this.$store.getters.uid;
+    }
+  },
+  methods: {
+    timeAgo: function timeAgo(date) {
+      var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
+      return timePassed === 'Invalid date' ? 'A long, long time ago...' : timePassed;
+    },
+    newNote: function newNote() {
+      this.editingNote = {
+        new: true,
+        title: '',
+        content: ''
+      };
+    },
+    addNote: function addNote() {
+      var newNote = (0, _extends3.default)({}, this.editingNote);
+      newNote[this.uid] = true;
+      newNote.dateCreated = (0, _moment2.default)().toString();
+
+      // Remove the 'new' key
+      delete newNote.new;
+
+      // Push note into database
+      notesRef.push(newNote);
+
+      this.closeEditor();
+    },
+    deleteNote: function deleteNote(note) {
+      // Remove note from firebase
+      notesRef.child(note['.key']).remove();
+    },
+    editNote: function editNote(note) {
+      // Push selected note into state
+      this.editingNote = note;
+    },
+    updateNote: function updateNote() {
+      // Update note in DB then clear the state
+      notesRef.child(this.editingNote['.key']).update({
+        content: this.editingNote.content,
+        title: this.editingNote.title
+      });
+
+      this.closeEditor();
+    },
+    closeEditor: function closeEditor() {
+      // Close editor
+      this.$emit('closeEditorClicked');
+      this.editingNote = false;
+    }
+  }
+};
+// </script>
+//
+// <style>
+//   .textarea {
+//     width: 100%;
+//   }
+//
+//   .new-note-icon,
+//   .close-editor-icon {
+//     position: absolute;
+//     top: 1.25rem;
+//     right: 1.25rem;
+//   }
+// </style>
+
+/***/ }),
 /* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(129), __esModule: true };
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _firebaseApp = __webpack_require__(5);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
+var _moment = __webpack_require__(0);
+
+var _moment2 = _interopRequireDefault(_moment);
+
+var _NoteEditor = __webpack_require__(167);
+
+var _NoteEditor2 = _interopRequireDefault(_NoteEditor);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
+//   <div class="section">
+//     <div class="container">
+//
+//       <div class="content-wrapper">
+//
+//         <div class="box">
+//           <h3 class="title">Notes</h3>
+//
+//           <a v-if="editingNote" class="close-editor-icon" @click="closeEditor"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+//
+//           <a v-else class="new-note-icon" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+//
+//           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
+//
+//           <div class="notes-list" v-else>
+//             <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
+//               <h4 class="title is-4">{{note.title}}</h4>
+//               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
+//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+//             </div>
+//           </div><!-- /.notes-list -->
+//
+//         </div><!-- /.box -->
+//
+//         <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
+//
+//       </div><!-- /.content-wrapper -->
+//
+//     </div><!-- /.container -->
+//   </div><!-- /.section -->
+// </template>
+//
+// <script>
+exports.default = {
+  components: { NoteEditor: _NoteEditor2.default },
+  data: function data() {
+    return {
+      editingNote: false
+    };
+  },
+
+  computed: {
+    uid: function uid() {
+      return this.$store.getters.uid;
+    }
+  },
+  firebase: function firebase() {
+    var userId = this.uid;
+    return {
+      notes: _firebaseApp2.default.db.ref('notes').orderByChild(userId).equalTo(true)
+    };
+  },
+
+  methods: {
+    timeAgo: function timeAgo(date) {
+      var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
+      return timePassed === 'Invalid date' ? 'A long, long time ago...' : timePassed;
+    },
+    newNote: function newNote() {
+      this.editingNote = {
+        new: true,
+        title: '',
+        content: ''
+      };
+    },
+    deleteNote: function deleteNote(note) {
+      // Remove note from firebase
+      notesRef.child(note['.key']).remove();
+    },
+    editNote: function editNote(note) {
+      // Push selected note into state
+      this.editingNote = note;
+    },
+    closeEditor: function closeEditor() {
+      // Close editor
+      this.editingNote = false;
+    }
+  }
+};
+// </script>
+//
+// <style>
+//   .section {
+//     width: 100%;
+//   }
+//
+//   .container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//   }
+//
+//   .box {
+//     position: relative;
+//     width: 100%;
+//   }
+//
+//   .textarea {
+//     width: 100%;
+//   }
+//
+//   .new-note-icon,
+//   .close-editor-icon {
+//     position: absolute;
+//     top: 1.25rem;
+//     right: 1.25rem;
+//   }
+//
+//   .logout-link {
+//     position: absolute;
+//     bottom: -5px;
+//     right: 0;
+//   }
+//
+//   .content-wrapper {
+//     position: relative;
+//   }
+//
+//   .note-container {
+//     height: 50px;
+//     border-bottom: 1px solid rgba(10,10,10,0.08);
+//     position: relative;
+//     margin: 20px 0px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//   }
+//
+//   div .delete-note {
+//     /* Hide the delete button by default */
+//     visibility: hidden;
+//     position: absolute;
+//     right: 0;
+//     bottom: 50%;
+//   }
+//
+//   div:hover > .delete-note {
+//     /* Show the delete button */
+//     visibility: visible;
+//   }
+//
+//   @media(min-width: 769px) {
+//     .content-wrapper {
+//       width: 35%;
+//     }
+//   }
+// </style>
 
 /***/ }),
 /* 127 */
@@ -24903,10 +24985,16 @@ module.exports = { "default": __webpack_require__(130), __esModule: true };
 /* 128 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = { "default": __webpack_require__(131), __esModule: true };
+
+/***/ }),
+/* 129 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var _Object$assign = __webpack_require__(127)["default"];
+var _Object$assign = __webpack_require__(128)["default"];
 
 exports["default"] = _Object$assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -24925,7 +25013,7 @@ exports["default"] = _Object$assign || function (target) {
 exports.__esModule = true;
 
 /***/ }),
-/* 129 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var core = __webpack_require__(7);
@@ -24934,14 +25022,14 @@ module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
 };
 
 /***/ }),
-/* 130 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(142);
+__webpack_require__(143);
 module.exports = __webpack_require__(7).Object.assign;
 
 /***/ }),
-/* 131 */
+/* 132 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -24950,7 +25038,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 132 */
+/* 133 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -24960,11 +25048,11 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 133 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(131);
+var aFunction = __webpack_require__(132);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -24985,7 +25073,7 @@ module.exports = function(fn, that, length){
 };
 
 /***/ }),
-/* 134 */
+/* 135 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -24995,12 +25083,12 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 135 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(137)
+var global    = __webpack_require__(138)
   , core      = __webpack_require__(7)
-  , ctx       = __webpack_require__(133)
+  , ctx       = __webpack_require__(134)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -25046,7 +25134,7 @@ $export.W = 32; // wrap
 module.exports = $export;
 
 /***/ }),
-/* 136 */
+/* 137 */
 /***/ (function(module, exports) {
 
 module.exports = function(exec){
@@ -25058,7 +25146,7 @@ module.exports = function(exec){
 };
 
 /***/ }),
-/* 137 */
+/* 138 */
 /***/ (function(module, exports) {
 
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
@@ -25067,17 +25155,17 @@ var global = module.exports = typeof window != 'undefined' && window.Math == Mat
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
-/* 138 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(132);
+var cof = __webpack_require__(133);
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
 
 /***/ }),
-/* 139 */
+/* 140 */
 /***/ (function(module, exports) {
 
 var $Object = Object;
@@ -25095,16 +25183,16 @@ module.exports = {
 };
 
 /***/ }),
-/* 140 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var $        = __webpack_require__(139)
-  , toObject = __webpack_require__(141)
-  , IObject  = __webpack_require__(138);
+var $        = __webpack_require__(140)
+  , toObject = __webpack_require__(142)
+  , IObject  = __webpack_require__(139);
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = __webpack_require__(136)(function(){
+module.exports = __webpack_require__(137)(function(){
   var a = Object.assign
     , A = {}
     , B = {}
@@ -25133,43 +25221,57 @@ module.exports = __webpack_require__(136)(function(){
 } : Object.assign;
 
 /***/ }),
-/* 141 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(134);
+var defined = __webpack_require__(135);
 module.exports = function(it){
   return Object(defined(it));
 };
 
 /***/ }),
-/* 142 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// 19.1.3.1 Object.assign(target, source)
-var $export = __webpack_require__(135);
-
-$export($export.S + $export.F, 'Object', {assign: __webpack_require__(140)});
-
-/***/ }),
 /* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
-// imports
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(136);
 
-
-// module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  .note-container {\n    height: 50px;\n    border-bottom: 1px solid rgba(10,10,10,0.08);\n    position: relative;\n    margin: 20px 0px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  div .delete-note {\n    /* Hide the delete button by default */\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    bottom: 50%;\n  }\n\n  div:hover > .delete-note {\n    /* Show the delete button */\n    visibility: visible;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
-
-// exports
-
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(141)});
 
 /***/ }),
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note-icon,\n  .close-editor-icon {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  .note-container {\n    height: 50px;\n    border-bottom: 1px solid rgba(10,10,10,0.08);\n    position: relative;\n    margin: 20px 0px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  div .delete-note {\n    /* Hide the delete button by default */\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    bottom: 50%;\n  }\n\n  div:hover > .delete-note {\n    /* Show the delete button */\n    visibility: visible;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 145 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
+// imports
+
+
+// module
+exports.push([module.i, "\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note-icon,\n  .close-editor-icon {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 146 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)();
 // imports
 
 
@@ -25180,10 +25282,10 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 145 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
+exports = module.exports = __webpack_require__(2)();
 // imports
 
 
@@ -25194,10 +25296,10 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 
 /***/ }),
-/* 146 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(3)();
+exports = module.exports = __webpack_require__(2)();
 // imports
 
 
@@ -25208,10 +25310,10 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 
 /***/ }),
-/* 147 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25456,10 +25558,10 @@ module.exports = firebase.auth;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 148 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25727,7 +25829,7 @@ module.exports = firebase.database;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 149 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -25737,19 +25839,19 @@ module.exports = firebase.database;
  *
  *   firebase = require('firebase');
  */
-var firebase = __webpack_require__(2);
-__webpack_require__(147);
-__webpack_require__(148);
-__webpack_require__(151);
+var firebase = __webpack_require__(3);
+__webpack_require__(149);
 __webpack_require__(150);
+__webpack_require__(153);
+__webpack_require__(152);
 module.exports = firebase;
 
 
 /***/ }),
-/* 150 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25792,10 +25894,10 @@ module.exports = firebase.messaging;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 151 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(2);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25853,7 +25955,7 @@ module.exports = firebase.storage;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 152 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -26088,17 +26190,17 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = 152;
+webpackContext.id = 154;
 
 
 /***/ }),
-/* 153 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(143);
+var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -26107,8 +26209,8 @@ if(content.locals) module.exports = content.locals;
 if(false) {
 	// When the styles change, update the <style> tags
 	if(!content.locals) {
-		module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-47fd691b&file=Notes.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Notes.vue", function() {
-			var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-47fd691b&file=Notes.vue!./../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Notes.vue");
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0a592466&file=Notes.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Notes.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-0a592466&file=Notes.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./Notes.vue");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -26118,13 +26220,39 @@ if(false) {
 }
 
 /***/ }),
-/* 154 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(144);
+var content = __webpack_require__(145);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// add the styles to the DOM
+var update = __webpack_require__(4)(content, {});
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2c6f5ea3&file=NoteEditor.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NoteEditor.vue", function() {
+			var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/vue-loader/lib/style-rewriter.js?id=_v-2c6f5ea3&file=NoteEditor.vue!./../../../node_modules/vue-loader/lib/selector.js?type=style&index=0!./NoteEditor.vue");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(146);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -26144,13 +26272,13 @@ if(false) {
 }
 
 /***/ }),
-/* 155 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(145);
+var content = __webpack_require__(147);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -26170,13 +26298,13 @@ if(false) {
 }
 
 /***/ }),
-/* 156 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(146);
+var content = __webpack_require__(148);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(4)(content, {});
@@ -26196,37 +26324,43 @@ if(false) {
 }
 
 /***/ }),
-/* 157 */
+/* 160 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div id=\"app\">\n    <router-view></router-view>\n  </div>\n";
 
 /***/ }),
-/* 158 */
+/* 161 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Login</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"login\" class=\"button is-success\">\n              Login\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"signup-link\"><router-link to=\"/signup\">Need to create an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 159 */
-/***/ (function(module, exports) {
-
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button v-if=\"editingNote.new\" class=\"button is-primary\" @click=\"addNote()\">Save</button>\n                <button v-else class=\"button is-primary\" @click=\"updateNote()\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button @click=\"closeEditor\" class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              <h4 class=\"title is-4\">{{note.title}}</h4>\n              <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
-
-/***/ }),
-/* 160 */
+/* 162 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Signup</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"signup\" class=\"button is-success\">\n              Signup\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 161 */
+/* 163 */
+/***/ (function(module, exports) {
+
+module.exports = "\n  <div>\n    <div class=\"note-editor\" v-if=\"editingNote\">\n      <div class=\"control\">\n        <label class=\"label\">Title</label>\n        <input class=\"input\" v-model=\"editingNote.title\" />\n      </div>\n\n      <div class=\"control\">\n        <label class=\"label\">Note</label>\n        <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n      </div>\n\n      <div class=\"control is-grouped\">\n        <p class=\"control\">\n          <button v-if=\"editingNote.new\" class=\"button is-primary\" @click=\"addNote()\">Save</button>\n          <button v-else class=\"button is-primary\" @click=\"updateNote()\">Save</button>\n        </p>\n        <p class=\"control\">\n          <button @click=\"closeEditor\" class=\"button is-link\">Cancel</button>\n        </p>\n      </div>\n    </div>\n  </div>\n";
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports) {
+
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a v-if=\"editingNote\" class=\"close-editor-icon\" @click=\"closeEditor\"><i class=\"fa fa-times fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <a v-else class=\"new-note-icon\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <NoteEditor v-if=\"editingNote\" :note=editingNote v-on:closeEditorClicked=\"closeEditor\" />\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              <h4 class=\"title is-4\">{{note.title}}</h4>\n              <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+
+/***/ }),
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(155)
+__webpack_require__(158)
 __vue_script__ = __webpack_require__(123)
-__vue_template__ = __webpack_require__(158)
+__vue_template__ = __webpack_require__(161)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -26243,36 +26377,13 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 162 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(153)
+__webpack_require__(159)
 __vue_script__ = __webpack_require__(124)
-__vue_template__ = __webpack_require__(159)
-module.exports = __vue_script__ || {}
-if (module.exports.__esModule) module.exports = module.exports.default
-if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
-if (false) {(function () {  module.hot.accept()
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  var id = "/Users/MisterShred/Programming/noted/src/components/Notes.vue"
-  if (!module.hot.data) {
-    hotAPI.createRecord(id, module.exports)
-  } else {
-    hotAPI.update(id, module.exports, __vue_template__)
-  }
-})()}
-
-/***/ }),
-/* 163 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_script__, __vue_template__
-__webpack_require__(156)
-__vue_script__ = __webpack_require__(125)
-__vue_template__ = __webpack_require__(160)
+__vue_template__ = __webpack_require__(162)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -26289,7 +26400,53 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 164 */
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_script__, __vue_template__
+__webpack_require__(156)
+__vue_script__ = __webpack_require__(125)
+__vue_template__ = __webpack_require__(163)
+module.exports = __vue_script__ || {}
+if (module.exports.__esModule) module.exports = module.exports.default
+if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+if (false) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/MisterShred/Programming/noted/src/components/notes/NoteEditor.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, __vue_template__)
+  }
+})()}
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_script__, __vue_template__
+__webpack_require__(155)
+__vue_script__ = __webpack_require__(126)
+__vue_template__ = __webpack_require__(164)
+module.exports = __vue_script__ || {}
+if (module.exports.__esModule) module.exports = module.exports.default
+if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
+if (false) {(function () {  module.hot.accept()
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  var id = "/Users/MisterShred/Programming/noted/src/components/notes/Notes.vue"
+  if (!module.hot.data) {
+    hotAPI.createRecord(id, module.exports)
+  } else {
+    hotAPI.update(id, module.exports, __vue_template__)
+  }
+})()}
+
+/***/ }),
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28576,7 +28733,7 @@ module.exports = VueRouter;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(117)))
 
 /***/ }),
-/* 165 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -29387,7 +29544,7 @@ return index;
 
 
 /***/ }),
-/* 166 */
+/* 171 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -29415,13 +29572,13 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 167 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _vue = __webpack_require__(5);
+var _vue = __webpack_require__(6);
 
 var _vue2 = _interopRequireDefault(_vue);
 
