@@ -9956,9 +9956,9 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //           </div>
 //
 //           <div class="notes-list" v-else>
-//             <div v-for="note in notes" v-on:dblclick="editNote(note)">
+//             <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
 //               {{note.title}}
-//               <button class="button is-danger" @click="deleteNote(note)">X</button>
+//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
 //             </div>
 //           </div><!-- /.notes-list -->
 //
@@ -10071,6 +10071,22 @@ exports.default = {
 //
 //   .content-wrapper {
 //     position: relative;
+//   }
+//
+//   .note-container {
+//     position: relative;
+//   }
+//
+//   div .delete-note {
+//     /* Hide the delete button by default */
+//     visibility: hidden;
+//     position: absolute;
+//     right: 0;
+//   }
+//
+//   div:hover > .delete-note {
+//     /* Show the delete button */
+//     visibility: visible;
 //   }
 //
 //   @media(min-width: 769px) {
@@ -10477,7 +10493,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  .note-container {\n    position: relative;\n  }\n\n  div .delete-note {\n    /* Hide the delete button by default */\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n  }\n\n  div:hover > .delete-note {\n    /* Show the delete button */\n    visibility: visible;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -11289,7 +11305,7 @@ module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button v-if=\"editingNote.new\" class=\"button is-primary\" @click=\"addNote()\">Save</button>\n                <button v-else class=\"button is-primary\" @click=\"updateNote()\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button @click=\"closeEditor\" class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              {{note.title}}\n              <button class=\"button is-danger\" @click=\"deleteNote(note)\">X</button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button v-if=\"editingNote.new\" class=\"button is-primary\" @click=\"addNote()\">Save</button>\n                <button v-else class=\"button is-primary\" @click=\"updateNote()\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button @click=\"closeEditor\" class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              {{note.title}}\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 50 */

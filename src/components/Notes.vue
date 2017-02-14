@@ -32,9 +32,9 @@
           </div>
 
           <div class="notes-list" v-else>
-            <div v-for="note in notes" v-on:dblclick="editNote(note)">
+            <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
               {{note.title}}
-              <button class="button is-danger" @click="deleteNote(note)">X</button>
+              <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
           </div><!-- /.notes-list -->
 
@@ -149,6 +149,22 @@
 
   .content-wrapper {
     position: relative;
+  }
+
+  .note-container {
+    position: relative;
+  }
+
+  div .delete-note {
+    /* Hide the delete button by default */
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+  }
+
+  div:hover > .delete-note {
+    /* Show the delete button */
+    visibility: visible;
   }
 
   @media(min-width: 769px) {
