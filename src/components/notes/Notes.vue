@@ -62,8 +62,8 @@
         return (timePassed === 'Invalid date') ? 'A long, long time ago...' : timePassed;
       },
       safeTitle(title) {
-        return (title.length > 25) ? `${title.substr(1, 25)}...` : title;
-      }
+        return (title.length > 45) ? `${title.substr(1, 45)}...` : title;
+      },
       newNote() {
         this.editingNote = {
           new: true,
