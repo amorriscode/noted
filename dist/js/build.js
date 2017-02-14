@@ -24724,6 +24724,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // </template>
 //
 // <script>
+var notesRef = _firebaseApp2.default.db.ref('notes');
+
 exports.default = {
   props: ['note'],
   data: function data() {
