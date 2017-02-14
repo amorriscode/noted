@@ -33,7 +33,8 @@
 
           <div class="notes-list" v-else>
             <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
-              {{note.title}}
+              <h4 class="title is-4">{{note.title}}</h4>
+              <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
           </div><!-- /.notes-list -->
@@ -50,6 +51,7 @@
 
 <script>
   import firebaseApp from '../firebaseApp';
+  import moment from 'moment';
 
   const notesRef = firebaseApp.db.ref('notes');
 
@@ -71,6 +73,10 @@
       }
     },
     methods: {
+      timeAgo(date) {
+        const timePassed = moment(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
+        return (timePassed === 'Invalid date') ? 'A long, long time ago...' : timePassed;
+      },
       newNote() {
         this.editingNote = {
           new: true,
@@ -81,8 +87,9 @@
       addNote() {
         const newNote = {...this.editingNote};
         newNote[this.uid] = true;
+        newNote.dateCreated = moment().toString();
 
-        // Remove the new key
+        // Remove the 'new' key
         delete newNote.new;
 
         // Push note into database
@@ -152,7 +159,13 @@
   }
 
   .note-container {
+    height: 50px;
+    border-bottom: 1px solid rgba(10,10,10,0.08);
     position: relative;
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   div .delete-note {
@@ -160,6 +173,7 @@
     visibility: hidden;
     position: absolute;
     right: 0;
+    bottom: 50%;
   }
 
   div:hover > .delete-note {
