@@ -11,17 +11,21 @@
 
           <a v-else class="new-note-icon" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 
+          <div v-if="displayHighlighter" class="new-note-highlighter"></div>
+
           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
 
           <div class="notes-list" v-else>
-            <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
-              <h4 class="title is-4">{{safeTitle(note)}}</h4>
-              <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
-              <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
-            </div><!-- /.notes-container -->
+            <div v-if="notes.length > 0">
+              <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
+                <h4 class="title is-4">{{safeTitle(note)}}</h4>
+                <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
+                <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+              </div><!-- /.note-container -->
+            </div>
 
             <div v-else>
-              You have no notes yet.
+              Hmm, nothing of note here...
             </div>
           </div><!-- /.notes-list -->
 
@@ -54,6 +58,9 @@
       notesRef() {
         const userId = this.uid;
         return firebaseApp.db.ref(`notes/${userId}`);
+      },
+      displayHighlighter() {
+        if (this.notes.length <= 0 && this.editingNote === false) return true;
       }
     },
     firebase() {
@@ -121,6 +128,7 @@
 
   .new-note-icon,
   .close-editor-icon {
+    z-index: 1;
     position: absolute;
     top: 1.25rem;
     right: 1.25rem;
@@ -157,6 +165,34 @@
   div:hover > .delete-note {
     /* Show the delete button */
     visibility: visible;
+  }
+
+  .new-note-highlighter {
+    border: 1px solid #00d1b2;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    position: absolute;
+    top: 11px;
+    right: 9px;
+
+    animation: pulse 2s linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes "pulse" {
+    0% {
+      transform: scale(0);
+      opacity: 0.0;
+   }
+   50% {
+      transform: scale(1);
+      opacity: 1;
+   }
+   100% {
+      transform: scale(2);
+      opacity: 0.0;
+    }
   }
 
   @media(min-width: 769px) {

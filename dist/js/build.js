@@ -24586,6 +24586,19 @@ exports.default = {
       }
     };
   },
+  created: function created() {
+    var _this = this;
+
+    _firebaseApp2.default.firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // Set the user in the store... (enhance this later)
+        _this.$store.commit('setUser', _firebaseApp2.default.firebase.auth().currentUser);
+
+        // Head to the notes page
+        _this.$router.push('notes');
+      }
+    });
+  },
 
   methods: {
     signup: function signup() {
@@ -24601,12 +24614,6 @@ exports.default = {
         }
         console.log(error);
       });
-
-      // Set the user in the store... (enhance this later)
-      this.$store.commit('setUser', _firebaseApp2.default.firebase.auth().currentUser);
-
-      // Head to the notes page
-      this.$router.push('notes');
     }
   }
 };
@@ -24854,6 +24861,9 @@ exports.default = {
     notesRef: function notesRef() {
       var userId = this.uid;
       return _firebaseApp2.default.db.ref('notes/' + userId);
+    },
+    displayHighlighter: function displayHighlighter() {
+      if (this.notes.length <= 0 && this.editingNote === false) return true;
     }
   },
   firebase: function firebase() {
@@ -24921,6 +24931,7 @@ exports.default = {
 //
 //   .new-note-icon,
 //   .close-editor-icon {
+//     z-index: 1;
 //     position: absolute;
 //     top: 1.25rem;
 //     right: 1.25rem;
@@ -24959,6 +24970,34 @@ exports.default = {
 //     visibility: visible;
 //   }
 //
+//   .new-note-highlighter {
+//     border: 1px solid #00d1b2;
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 50px;
+//     position: absolute;
+//     top: 11px;
+//     right: 9px;
+//
+//     animation: pulse 2s linear;
+//     animation-iteration-count: infinite;
+//   }
+//
+//   @keyframes "pulse" {
+//     0% {
+//       transform: scale(0);
+//       opacity: 0.0;
+//    }
+//    50% {
+//       transform: scale(1);
+//       opacity: 1;
+//    }
+//    100% {
+//       transform: scale(2);
+//       opacity: 0.0;
+//     }
+//   }
+//
 //   @media(min-width: 769px) {
 //     .content-wrapper {
 //       width: 35%;
@@ -24978,17 +25017,21 @@ exports.default = {
 //
 //           <a v-else class="new-note-icon" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 //
+//           <div v-if="displayHighlighter" class="new-note-highlighter"></div>
+//
 //           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
 //
 //           <div class="notes-list" v-else>
-//             <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
-//               <h4 class="title is-4">{{safeTitle(note)}}</h4>
-//               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
-//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
-//             </div><!-- /.notes-container -->
+//             <div v-if="notes.length > 0">
+//               <div class="note-container" v-for="note in notes" v-on:dblclick="editNote(note)">
+//                 <h4 class="title is-4">{{safeTitle(note)}}</h4>
+//                 <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
+//                 <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+//               </div><!-- /.note-container -->
+//             </div>
 //
 //             <div v-else>
-//               You have no notes yet.
+//               Hmm, nothing of note here...
 //             </div>
 //           </div><!-- /.notes-list -->
 //
@@ -25277,7 +25320,7 @@ exports = module.exports = __webpack_require__(3)();
 
 
 // module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note-icon,\n  .close-editor-icon {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  .note-container {\n    height: 50px;\n    border-bottom: 1px solid rgba(10,10,10,0.08);\n    position: relative;\n    margin: 20px 0px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  div .delete-note {\n    /* Hide the delete button by default */\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    bottom: 50%;\n  }\n\n  div:hover > .delete-note {\n    /* Show the delete button */\n    visibility: visible;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note-icon,\n  .close-editor-icon {\n    z-index: 1;\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  .note-container {\n    height: 50px;\n    border-bottom: 1px solid rgba(10,10,10,0.08);\n    position: relative;\n    margin: 20px 0px;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  div .delete-note {\n    /* Hide the delete button by default */\n    visibility: hidden;\n    position: absolute;\n    right: 0;\n    bottom: 50%;\n  }\n\n  div:hover > .delete-note {\n    /* Show the delete button */\n    visibility: visible;\n  }\n\n  .new-note-highlighter {\n    border: 1px solid #00d1b2;\n    width: 40px;\n    height: 40px;\n    border-radius: 50px;\n    position: absolute;\n    top: 11px;\n    right: 9px;\n\n    -webkit-animation: pulse 2s linear;\n\n            animation: pulse 2s linear;\n    -webkit-animation-iteration-count: infinite;\n            animation-iteration-count: infinite;\n  }\n\n  @-webkit-keyframes \"pulse\" {\n    0% {\n      -webkit-transform: scale(0);\n              transform: scale(0);\n      opacity: 0.0;\n   }\n   50% {\n      -webkit-transform: scale(1);\n              transform: scale(1);\n      opacity: 1;\n   }\n   100% {\n      -webkit-transform: scale(2);\n              transform: scale(2);\n      opacity: 0.0;\n    }\n  }\n\n  @keyframes \"pulse\" {\n    0% {\n      -webkit-transform: scale(0);\n              transform: scale(0);\n      opacity: 0.0;\n   }\n   50% {\n      -webkit-transform: scale(1);\n              transform: scale(1);\n      opacity: 1;\n   }\n   100% {\n      -webkit-transform: scale(2);\n              transform: scale(2);\n      opacity: 0.0;\n    }\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -26380,7 +26423,7 @@ module.exports = "\n  <div>\n    <div class=\"note-editor\" v-if=\"editingNote\"
 /* 164 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a v-if=\"editingNote\" class=\"close-editor-icon\" @click=\"closeEditor\"><i class=\"fa fa-times fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <a v-else class=\"new-note-icon\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <NoteEditor v-if=\"editingNote\" :note=editingNote v-on:closeEditorClicked=\"closeEditor\" />\n\n          <div class=\"notes-list\" v-else>\n            <div class=\"note-container\" v-if=\"notes.length > 0\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              <h4 class=\"title is-4\">{{safeTitle(note)}}</h4>\n              <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n              <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n            </div><!-- /.notes-container -->\n\n            <div v-else>\n              You have no notes yet.\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a v-if=\"editingNote\" class=\"close-editor-icon\" @click=\"closeEditor\"><i class=\"fa fa-times fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <a v-else class=\"new-note-icon\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div v-if=\"displayHighlighter\" class=\"new-note-highlighter\"></div>\n\n          <NoteEditor v-if=\"editingNote\" :note=editingNote v-on:closeEditorClicked=\"closeEditor\" />\n\n          <div class=\"notes-list\" v-else>\n            <div v-if=\"notes.length > 0\">\n              <div class=\"note-container\" v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n                <h4 class=\"title is-4\">{{safeTitle(note)}}</h4>\n                <h6 class=\"subtitle is-6\">{{timeAgo(note.dateCreated)}}</h6>\n                <button class=\"button is-danger delete-note is-small\" @click=\"deleteNote(note)\"><i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>\n              </div><!-- /.note-container -->\n            </div>\n\n            <div v-else>\n              Hmm, nothing of note here...\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 165 */
