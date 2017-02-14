@@ -23977,7 +23977,7 @@ _vue2.default.use(_vueRouter2.default);
 // Setup routes
 
 
-var routes = [{ path: '/login', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }, { path: '*', redirect: '/notes' }];
+var routes = [{ path: '/login', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }, { path: '/logout', component: _Login2.default }, { path: '*', redirect: '/notes' }];
 
 var router = new _vueRouter2.default({
   routes: routes
