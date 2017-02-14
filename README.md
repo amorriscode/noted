@@ -15,5 +15,13 @@ _In previous projects I had used a [webpack template](https://github.com/vuejs-t
 3. Changed `webpack.config.js` file to use `vue-loader` instead of `vue` to load Vue files
 
 4. Implemented Firebase using the firebase-tools
-* Run using `firebase serve`
-* Deploy using `firebase deploy`
+  * Run using `firebase serve`
+  * Deploy using `firebase deploy`
+
+### ToDo
+
+* Share notes between users
+* WYSIWYG editor
+* Find and crush the bugs
+* Enhance design (practice animations, etc.)
+* Add notifications
