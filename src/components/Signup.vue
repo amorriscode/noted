@@ -48,6 +48,14 @@
         }
       }
     },
+    created() {
+      window.addEventListener('keyup', (e) => {
+        console.log(e);
+        if (e.key === 'Enter') {
+          this.signup();
+        }
+      });
+    },
     methods: {
       signup() {
         firebaseApp.firebase.auth().createUserWithEmailAndPassword(this.credentials.email, this.credentials.password).catch(function(error) {

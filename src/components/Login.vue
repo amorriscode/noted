@@ -48,6 +48,14 @@
         }
       }
     },
+    created() {
+      window.addEventListener('keyup', (e) => {
+        console.log(e);
+        if (e.key === 'Enter') {
+          this.login();
+        }
+      });
+    },
     methods: {
       login() {
         // Sign in with email and use some basic error handling

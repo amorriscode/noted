@@ -24455,6 +24455,17 @@ exports.default = {
       }
     };
   },
+  created: function created() {
+    var _this = this;
+
+    window.addEventListener('keyup', function (e) {
+      console.log(e);
+      if (e.key === 'Enter') {
+        console.log('FUU');
+        _this.login();
+      }
+    });
+  },
 
   methods: {
     login: function login() {
