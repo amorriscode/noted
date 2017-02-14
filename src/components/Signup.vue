@@ -2,31 +2,35 @@
   <div class="section">
     <div class="container">
 
-      <div class="box">
-        <h3 class="title">Signup</h3>
+      <div class="content-wrapper">
 
-        <p class="control has-icon">
-          <input v-model="credentials.email" class="input" type="email" placeholder="Email">
-          <span class="icon is-small">
-            <i class="fa fa-envelope"></i>
-          </span>
-        </p>
-        <p class="control has-icon">
-          <input v-model="credentials.password" class="input" type="password" placeholder="Password">
-          <span class="icon is-small">
-            <i class="fa fa-lock"></i>
-          </span>
-        </p>
-        <p class="control">
-          <button @click="signup" class="button is-success">
-            Signup
-          </button>
+        <div class="box">
+          <h3 class="title">Signup</h3>
 
-        </p>
+          <p class="control has-icon">
+            <input v-model="credentials.email" class="input" type="email" placeholder="Email">
+            <span class="icon is-small">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </p>
+          <p class="control has-icon">
+            <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+            <span class="icon is-small">
+              <i class="fa fa-lock"></i>
+            </span>
+          </p>
+          <p class="control">
+            <button @click="signup" class="button is-success">
+              Signup
+            </button>
 
-      </div><!-- /.box -->
+          </p>
 
-      <a class="login-link"><router-link to="/login">Already have an account?</router-link></a>
+        </div><!-- /.box -->
+
+        <a class="login-link"><router-link to="/login">Already have an account?</router-link></a>
+
+      </div><!-- /.content-wrapper -->
 
     </div><!-- /.container -->
   </div><!-- /.section -->
@@ -83,10 +87,19 @@
   .login-link {
     position: absolute;
     bottom: -5px;
+    right: 0;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .content-wrapper {
+    position: relative;
   }
 
   @media(min-width: 769px) {
-    .box {
+    .content-wrapper {
       width: 35%;
     }
   }
