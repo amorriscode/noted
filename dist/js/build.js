@@ -24724,8 +24724,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // </template>
 //
 // <script>
-var notesRef = _firebaseApp2.default.db.ref('notes');
-
 exports.default = {
   props: ['note'],
   data: function data() {
@@ -24737,6 +24735,10 @@ exports.default = {
   computed: {
     uid: function uid() {
       return this.$store.getters.uid;
+    },
+    notesRef: function notesRef() {
+      var userId = this.uid;
+      return _firebaseApp2.default.db.ref('notes/' + userId);
     }
   },
   methods: {
@@ -24753,7 +24755,6 @@ exports.default = {
     },
     addNote: function addNote() {
       var newNote = (0, _extends3.default)({}, this.editingNote, {
-        owner: this.uid,
         dateCreated: (0, _moment2.default)().toString()
       });
 
@@ -24761,13 +24762,13 @@ exports.default = {
       delete newNote.new;
 
       // Push note into database
-      notesRef.push(newNote);
+      this.notesRef.push(newNote);
 
       this.closeEditor();
     },
     deleteNote: function deleteNote(note) {
       // Remove note from firebase
-      notesRef.child(note['.key']).remove();
+      this.notesRef.child(note['.key']).remove();
     },
     editNote: function editNote(note) {
       // Push selected note into state
@@ -24775,7 +24776,7 @@ exports.default = {
     },
     updateNote: function updateNote() {
       // Update note in DB then clear the state
-      notesRef.child(this.editingNote['.key']).update({
+      this.notesRef.child(this.editingNote['.key']).update({
         content: this.editingNote.content,
         title: this.editingNote.title
       });
@@ -24829,44 +24830,6 @@ var _NoteEditor2 = _interopRequireDefault(_NoteEditor);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
-//   <div class="section">
-//     <div class="container">
-//
-//       <div class="content-wrapper">
-//
-//         <div class="box">
-//           <h3 class="title">Notes</h3>
-//
-//           <a v-if="editingNote" class="close-editor-icon" @click="closeEditor"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-//
-//           <a v-else class="new-note-icon" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
-//
-//           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
-//
-//           <div class="notes-list" v-else>
-//             <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
-//               <h4 class="title is-4">{{safeTitle(note)}}</h4>
-//               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
-//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
-//             </div><!-- /.notes-container -->
-//
-//             <div v-else>
-//               You have no notes yet.
-//             </div>
-//           </div><!-- /.notes-list -->
-//
-//         </div><!-- /.box -->
-//
-//         <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
-//
-//       </div><!-- /.content-wrapper -->
-//
-//     </div><!-- /.container -->
-//   </div><!-- /.section -->
-// </template>
-//
-// <script>
 exports.default = {
   components: { NoteEditor: _NoteEditor2.default },
   data: function data() {
@@ -24878,12 +24841,16 @@ exports.default = {
   computed: {
     uid: function uid() {
       return this.$store.getters.uid;
+    },
+    notesRef: function notesRef() {
+      var userId = this.uid;
+      return _firebaseApp2.default.db.ref('notes/' + userId);
     }
   },
   firebase: function firebase() {
     var userId = this.uid;
     return {
-      notes: _firebaseApp2.default.db.ref('notes').orderByChild('owner').equalTo(userId)
+      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByChild('dateCreated')
     };
   },
 
@@ -24908,7 +24875,7 @@ exports.default = {
     },
     deleteNote: function deleteNote(note) {
       // Remove note from firebase
-      notesRef.child(note['.key']).remove();
+      this.notesRef.child(note['.key']).remove();
     },
     editNote: function editNote(note) {
       // Push selected note into state
@@ -24988,6 +24955,44 @@ exports.default = {
 //     }
 //   }
 // </style>
+// <template>
+//   <div class="section">
+//     <div class="container">
+//
+//       <div class="content-wrapper">
+//
+//         <div class="box">
+//           <h3 class="title">Notes</h3>
+//
+//           <a v-if="editingNote" class="close-editor-icon" @click="closeEditor"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+//
+//           <a v-else class="new-note-icon" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
+//
+//           <NoteEditor v-if="editingNote" :note=editingNote v-on:closeEditorClicked="closeEditor" />
+//
+//           <div class="notes-list" v-else>
+//             <div class="note-container" v-if="notes.length > 0" v-for="note in notes" v-on:dblclick="editNote(note)">
+//               <h4 class="title is-4">{{safeTitle(note)}}</h4>
+//               <h6 class="subtitle is-6">{{timeAgo(note.dateCreated)}}</h6>
+//               <button class="button is-danger delete-note is-small" @click="deleteNote(note)"><i class="fa fa-times" aria-hidden="true"></i></button>
+//             </div><!-- /.notes-container -->
+//
+//             <div v-else>
+//               You have no notes yet.
+//             </div>
+//           </div><!-- /.notes-list -->
+//
+//         </div><!-- /.box -->
+//
+//         <a class="logout-link"><router-link to="/logout">Logout</router-link></a>
+//
+//       </div><!-- /.content-wrapper -->
+//
+//     </div><!-- /.container -->
+//   </div><!-- /.section -->
+// </template>
+//
+// <script>
 
 /***/ }),
 /* 127 */

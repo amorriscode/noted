@@ -40,8 +40,6 @@
   import moment from 'moment';
   import NoteEditor from './NoteEditor.vue';
 
-  const notesRef = firebaseApp.db.ref('notes');
-
   export default {
     components: { NoteEditor },
     data () {
@@ -53,11 +51,15 @@
       uid() {
         return this.$store.getters.uid;
       },
+      notesRef() {
+        const userId = this.uid;
+        return firebaseApp.db.ref(`notes/${userId}`);
+      }
     },
     firebase() {
       const userId = this.uid;
       return {
-        notes: firebaseApp.db.ref('notes').orderByChild('owner').equalTo(userId)
+        notes: firebaseApp.db.ref(`notes/${userId}`).orderByChild('dateCreated')
       }
     },
     methods: {
@@ -82,7 +84,7 @@
       },
       deleteNote(note) {
         // Remove note from firebase
-        notesRef.child(note['.key']).remove();
+        this.notesRef.child(note['.key']).remove();
       },
       editNote(note) {
         // Push selected note into state

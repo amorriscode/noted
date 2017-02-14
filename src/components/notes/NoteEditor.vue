@@ -28,8 +28,6 @@
   import firebaseApp from '../../firebaseApp';
   import moment from 'moment';
 
-  const notesRef = firebaseApp.db.ref('notes');
-
   export default {
     props: ['note'],
     data () {
@@ -41,6 +39,10 @@
       uid() {
         return this.$store.getters.uid;
       },
+      notesRef() {
+        const userId = this.uid;
+        return firebaseApp.db.ref(`notes/${userId}`);
+      }
     },
     methods: {
       timeAgo(date) {
@@ -57,7 +59,6 @@
       addNote() {
         const newNote = {
           ...this.editingNote,
-          owner: this.uid,
           dateCreated: moment().toString()
         };
 
@@ -65,13 +66,13 @@
         delete newNote.new;
 
         // Push note into database
-        notesRef.push(newNote);
+        this.notesRef.push(newNote);
 
         this.closeEditor();
       },
       deleteNote(note) {
         // Remove note from firebase
-        notesRef.child(note['.key']).remove();
+        this.notesRef.child(note['.key']).remove();
       },
       editNote(note) {
         // Push selected note into state
@@ -79,7 +80,7 @@
       },
       updateNote() {
         // Update note in DB then clear the state
-        notesRef.child(this.editingNote['.key']).update({
+        this.notesRef.child(this.editingNote['.key']).update({
           content: this.editingNote.content,
           title: this.editingNote.title
         });
