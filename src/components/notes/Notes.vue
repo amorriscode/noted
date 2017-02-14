@@ -59,7 +59,7 @@
     methods: {
       timeAgo(date) {
         const timePassed = moment(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
-        return (timePassed === 'Invalid date') ? 'A long, long time ago...' : timePassed;
+        return (timePassed === 'Invalid date') ? 'a long, long time ago...' : timePassed;
       },
       safeTitle(title) {
         return (title.length > 45) ? `${title.substr(1, 45)}...` : title;
