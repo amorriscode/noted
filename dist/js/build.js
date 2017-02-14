@@ -24458,9 +24458,13 @@ exports.default = {
   created: function created() {
     var _this = this;
 
-    window.addEventListener('keyup', function (e) {
-      if (e.key === 'Enter') {
-        _this.login();
+    _firebaseApp2.default.firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        // Set the user in the store... (enhance this later)
+        _this.$store.commit('setUser', _firebaseApp2.default.firebase.auth().currentUser);
+
+        // Head to the notes page
+        _this.$router.push('notes');
       }
     });
   },
@@ -24480,12 +24484,6 @@ exports.default = {
         }
         console.log(error);
       });
-
-      // Set the user in the store... (enhance this later)
-      this.$store.commit('setUser', _firebaseApp2.default.firebase.auth().currentUser);
-
-      // Head to the notes page
-      this.$router.push('notes');
     }
   }
 };
@@ -24538,7 +24536,7 @@ exports.default = {
 //             </span>
 //           </p>
 //           <p class="control has-icon">
-//             <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+//             <input @keyup.enter="login" v-model="credentials.password" class="input" type="password" placeholder="Password">
 //             <span class="icon is-small">
 //               <i class="fa fa-lock"></i>
 //             </span>
@@ -24587,15 +24585,6 @@ exports.default = {
         password: ''
       }
     };
-  },
-  created: function created() {
-    var _this = this;
-
-    window.addEventListener('keyup', function (e) {
-      if (e.key === 'Enter') {
-        _this.signup();
-      }
-    });
   },
 
   methods: {
@@ -24671,7 +24660,7 @@ exports.default = {
 //             </span>
 //           </p>
 //           <p class="control has-icon">
-//             <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+//             <input @keyup.enter="signup" v-model="credentials.password" class="input" type="password" placeholder="Password">
 //             <span class="icon is-small">
 //               <i class="fa fa-lock"></i>
 //             </span>
@@ -26373,13 +26362,13 @@ module.exports = "\n  <div id=\"app\">\n    <router-view></router-view>\n  </div
 /* 161 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Login</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"login\" class=\"button is-success\">\n              Login\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"signup-link\"><router-link to=\"/signup\">Need to create an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Login</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input @keyup.enter=\"login\" v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"login\" class=\"button is-success\">\n              Login\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"signup-link\"><router-link to=\"/signup\">Need to create an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 162 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Signup</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"signup\" class=\"button is-success\">\n              Signup\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Signup</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input @keyup.enter=\"signup\" v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"signup\" class=\"button is-success\">\n              Signup\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 163 */

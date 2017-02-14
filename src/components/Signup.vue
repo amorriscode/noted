@@ -14,7 +14,7 @@
             </span>
           </p>
           <p class="control has-icon">
-            <input v-model="credentials.password" class="input" type="password" placeholder="Password">
+            <input @keyup.enter="signup" v-model="credentials.password" class="input" type="password" placeholder="Password">
             <span class="icon is-small">
               <i class="fa fa-lock"></i>
             </span>
@@ -49,9 +49,13 @@
       }
     },
     created() {
-      window.addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') {
-          this.signup();
+      firebaseApp.firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          // Set the user in the store... (enhance this later)
+          this.$store.commit('setUser', firebaseApp.firebase.auth().currentUser);
+
+          // Head to the notes page
+          this.$router.push('notes');
         }
       });
     },
