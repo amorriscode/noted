@@ -4403,6 +4403,34 @@ module.exports = g;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _firebase = __webpack_require__(151);
+
+var _firebase2 = _interopRequireDefault(_firebase);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// Setup Firebase
+var config = {
+  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
+  authDomain: "noted-b5ad0.firebaseapp.com",
+  databaseURL: "https://noted-b5ad0.firebaseio.com"
+};
+
+var firebase = _firebase2.default.initializeApp(config);
+var db = firebase.database();
+
+module.exports = {
+  firebase: firebase,
+  db: db
+};
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 /*
@@ -4458,7 +4486,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
@@ -4497,7 +4525,7 @@ module.exports = firebase;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -4747,34 +4775,6 @@ function updateLink(linkElement, obj) {
 		URL.revokeObjectURL(oldSrc);
 }
 
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _firebase = __webpack_require__(151);
-
-var _firebase2 = _interopRequireDefault(_firebase);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Setup Firebase
-var config = {
-  apiKey: "AIzaSyDyx_n4m0U56fdlc-Jhsn7fOWzONP9O5Ak",
-  authDomain: "noted-b5ad0.firebaseapp.com",
-  databaseURL: "https://noted-b5ad0.firebaseio.com"
-};
-
-var firebase = _firebase2.default.initializeApp(config);
-var db = firebase.database();
-
-module.exports = {
-  firebase: firebase,
-  db: db
-};
 
 /***/ }),
 /* 6 */
@@ -24380,6 +24380,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _firebaseApp = __webpack_require__(2);
+
+var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
+
 var _store = __webpack_require__(8);
 
 var _store2 = _interopRequireDefault(_store);
@@ -24397,6 +24401,7 @@ exports.default = {
     if (_store2.default.state.user) return true;
   },
   logout: function logout() {
+    _firebaseApp2.default.firebase.auth().signOut();
     _store2.default.commit('logoutUser');
   }
 };
@@ -24435,7 +24440,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(5);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24559,7 +24564,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(5);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24687,7 +24692,7 @@ var _extends2 = __webpack_require__(129);
 
 var _extends3 = _interopRequireDefault(_extends2);
 
-var _firebaseApp = __webpack_require__(5);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24813,7 +24818,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _firebaseApp = __webpack_require__(5);
+var _firebaseApp = __webpack_require__(2);
 
 var _firebaseApp2 = _interopRequireDefault(_firebaseApp);
 
@@ -24848,7 +24853,7 @@ exports.default = {
     var userId = this.uid;
     var now = parseInt((0, _moment2.default)().unix());
     return {
-      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByKey()
+      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByChild('dateCreated')
     };
   },
 
@@ -25260,7 +25265,7 @@ $export($export.S + $export.F, 'Object', {assign: __webpack_require__(141)});
 /* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -25274,7 +25279,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 /* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -25288,7 +25293,7 @@ exports.push([module.i, "\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note-i
 /* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -25302,7 +25307,7 @@ exports.push([module.i, "\n", ""]);
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -25316,7 +25321,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 /* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)();
+exports = module.exports = __webpack_require__(3)();
 // imports
 
 
@@ -25330,7 +25335,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(4);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25578,7 +25583,7 @@ module.exports = firebase.auth;
 /* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(4);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25856,7 +25861,7 @@ module.exports = firebase.database;
  *
  *   firebase = require('firebase');
  */
-var firebase = __webpack_require__(3);
+var firebase = __webpack_require__(4);
 __webpack_require__(149);
 __webpack_require__(150);
 __webpack_require__(153);
@@ -25868,7 +25873,7 @@ module.exports = firebase;
 /* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(4);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -25914,7 +25919,7 @@ module.exports = firebase.messaging;
 /* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(3);
+/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(4);
 (function(){
 /*! @license Firebase v3.6.9
     Build: 3.6.9-rc.1
@@ -26220,7 +26225,7 @@ webpackContext.id = 154;
 var content = __webpack_require__(144);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -26246,7 +26251,7 @@ if(false) {
 var content = __webpack_require__(145);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -26272,7 +26277,7 @@ if(false) {
 var content = __webpack_require__(146);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -26298,7 +26303,7 @@ if(false) {
 var content = __webpack_require__(147);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -26324,7 +26329,7 @@ if(false) {
 var content = __webpack_require__(148);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(5)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {

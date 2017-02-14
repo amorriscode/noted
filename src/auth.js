@@ -1,3 +1,4 @@
+import firebaseApp from './firebaseApp';
 import store from './store'
 
 export default {
@@ -12,6 +13,7 @@ export default {
   },
 
   logout() {
+    firebaseApp.firebase.auth().signOut();
     store.commit('logoutUser');
   }
 }
