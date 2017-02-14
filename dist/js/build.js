@@ -24742,10 +24742,6 @@ exports.default = {
     }
   },
   methods: {
-    timeAgo: function timeAgo(date) {
-      var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
-      return timePassed === 'Invalid date' ? 'A long, long time ago...' : timePassed;
-    },
     newNote: function newNote() {
       this.editingNote = {
         new: true,
@@ -24755,7 +24751,7 @@ exports.default = {
     },
     addNote: function addNote() {
       var newNote = (0, _extends3.default)({}, this.editingNote, {
-        dateCreated: (0, _moment2.default)().toString()
+        dateCreated: parseInt((0, _moment2.default)().unix())
       });
 
       // Remove the 'new' key
@@ -24856,7 +24852,7 @@ exports.default = {
 
   methods: {
     timeAgo: function timeAgo(date) {
-      var timePassed = (0, _moment2.default)(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
+      var timePassed = (0, _moment2.default)(date, 'X').fromNow();
       return timePassed === 'Invalid date' ? 'a long, long time ago...' : timePassed;
     },
     safeTitle: function safeTitle(note) {

@@ -45,10 +45,6 @@
       }
     },
     methods: {
-      timeAgo(date) {
-        const timePassed = moment(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
-        return (timePassed === 'Invalid date') ? 'A long, long time ago...' : timePassed;
-      },
       newNote() {
         this.editingNote = {
           new: true,
@@ -57,9 +53,10 @@
         }
       },
       addNote() {
+        // Switch to unix for sorting
         const newNote = {
           ...this.editingNote,
-          dateCreated: moment().toString()
+          dateCreated: parseInt(moment().unix())
         };
 
         // Remove the 'new' key

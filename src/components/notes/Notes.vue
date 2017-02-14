@@ -64,7 +64,7 @@
     },
     methods: {
       timeAgo(date) {
-        const timePassed = moment(date, 'ddd MMM DD YYYY HH:mm:ss Z').fromNow();
+        const timePassed = moment(date, 'X').fromNow();
         return (timePassed === 'Invalid date') ? 'a long, long time ago...' : timePassed;
       },
       safeTitle(note) {
