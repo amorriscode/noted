@@ -24750,6 +24750,7 @@ exports.default = {
       };
     },
     addNote: function addNote() {
+      // Switch to unix for sorting
       var newNote = (0, _extends3.default)({}, this.editingNote, {
         dateCreated: parseInt((0, _moment2.default)().unix())
       });
@@ -24845,8 +24846,9 @@ exports.default = {
   },
   firebase: function firebase() {
     var userId = this.uid;
+    var now = parseInt((0, _moment2.default)().unix());
     return {
-      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByChild('dateCreated')
+      notes: _firebaseApp2.default.db.ref('notes/' + userId).orderByValue()
     };
   },
 

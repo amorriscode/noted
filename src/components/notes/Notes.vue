@@ -58,8 +58,9 @@
     },
     firebase() {
       const userId = this.uid;
+      const now = parseInt(moment().unix());
       return {
-        notes: firebaseApp.db.ref(`notes/${userId}`).orderByChild('dateCreated')
+        notes: firebaseApp.db.ref(`notes/${userId}`).orderByValue('dateCreated')
       }
     },
     methods: {
