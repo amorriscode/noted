@@ -7,21 +7,35 @@
         <div class="box">
           <h3 class="title">Notes</h3>
 
-          <input v-model="note" placeholder="Add Note">
-          <button @click="addNote">Add Note</button>
+          <a class="new-note" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 
-          <div v-for="note in notes" v-on:dblclick="editNote(note)">
-            <span v-if="editingNote['.key'] === note['.key']">
-              <input v-model="editingNote.content"/>
-              <button @click="updateNote(note)">Save</button>
-            </span>
+          <div class="note-editor" v-if="editingNote">
+            <div class="control">
+              <label class="label">Title</label>
+              <input class="input" v-model="editingNote.title" />
+            </div>
 
-            <span v-else>
-              {{note.content}}
-              <button @click="deleteNote(note)">X</button>
-            </span>
+            <div class="control">
+              <label class="label">Note</label>
+              <textarea class="textarea" v-model="editingNote.content"></textarea>
+            </div>
 
+            <div class="control is-grouped">
+              <p class="control">
+                <button class="button is-primary" @click="updateNote(note)">Save</button>
+              </p>
+              <p class="control">
+                <button class="button is-link">Cancel</button>
+              </p>
+            </div>
           </div>
+
+          <div class="notes-list" v-else>
+            <div v-for="note in notes" v-on:dblclick="editNote(note)">
+              {{note.title}}
+              <button class="button is-danger" @click="deleteNote(note)">X</button>
+            </div>
+          </div><!-- /.notes-list -->
 
         </div><!-- /.box -->
 
@@ -42,7 +56,7 @@
     data () {
       return {
         note: '',
-        editingNote: '',
+        editingNote: false,
       }
     },
     computed: {
@@ -57,6 +71,9 @@
       }
     },
     methods: {
+      newNote() {
+
+      },
       addNote() {
         const newNote = {
           content: this.note
@@ -76,7 +93,10 @@
       },
       updateNote() {
         // Update note in DB then clear the state
-        notesRef.child(this.editingNote['.key']).update({content: this.editingNote.content});
+        notesRef.child(this.editingNote['.key']).update({
+          content: this.editingNote.content,
+          title: this.editingNote.title
+        });
         this.editingNote = '';
       }
     }
@@ -95,7 +115,18 @@
   }
 
   .box {
+    position: relative;
     width: 100%;
+  }
+
+  .textarea {
+    width: 100%;
+  }
+
+  .new-note {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
   }
 
   .logout-link {

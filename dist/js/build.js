@@ -9920,21 +9920,35 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //         <div class="box">
 //           <h3 class="title">Notes</h3>
 //
-//           <input v-model="note" placeholder="Add Note">
-//           <button @click="addNote">Add Note</button>
+//           <a class="new-note" @click="newNote"><i class="fa fa-plus fa-2x" aria-hidden="true"></i></a>
 //
-//           <div v-for="note in notes" v-on:dblclick="editNote(note)">
-//             <span v-if="editingNote['.key'] === note['.key']">
-//               <input v-model="editingNote.content"/>
-//               <button @click="updateNote(note)">Save</button>
-//             </span>
+//           <div class="note-editor" v-if="editingNote">
+//             <div class="control">
+//               <label class="label">Title</label>
+//               <input class="input" v-model="editingNote.title" />
+//             </div>
 //
-//             <span v-else>
-//               {{note.content}}
-//               <button @click="deleteNote(note)">X</button>
-//             </span>
+//             <div class="control">
+//               <label class="label">Note</label>
+//               <textarea class="textarea" v-model="editingNote.content"></textarea>
+//             </div>
 //
+//             <div class="control is-grouped">
+//               <p class="control">
+//                 <button class="button is-primary" @click="updateNote(note)">Save</button>
+//               </p>
+//               <p class="control">
+//                 <button class="button is-link">Cancel</button>
+//               </p>
+//             </div>
 //           </div>
+//
+//           <div class="notes-list" v-else>
+//             <div v-for="note in notes" v-on:dblclick="editNote(note)">
+//               {{note.content}}
+//               <button class="button is-danger" @click="deleteNote(note)">X</button>
+//             </div>
+//           </div><!-- /.notes-list -->
 //
 //         </div><!-- /.box -->
 //
@@ -9951,7 +9965,7 @@ exports.default = {
   data: function data() {
     return {
       note: '',
-      editingNote: ''
+      editingNote: false
     };
   },
 
@@ -9968,6 +9982,7 @@ exports.default = {
   },
 
   methods: {
+    newNote: function newNote() {},
     addNote: function addNote() {
       var newNote = {
         content: this.note
@@ -9987,7 +10002,10 @@ exports.default = {
     },
     updateNote: function updateNote() {
       // Update note in DB then clear the state
-      notesRef.child(this.editingNote['.key']).update({ content: this.editingNote.content });
+      notesRef.child(this.editingNote['.key']).update({
+        content: this.editingNote.content,
+        title: this.editingNote.title
+      });
       this.editingNote = '';
     }
   }
@@ -10006,7 +10024,18 @@ exports.default = {
 //   }
 //
 //   .box {
+//     position: relative;
 //     width: 100%;
+//   }
+//
+//   .textarea {
+//     width: 100%;
+//   }
+//
+//   .new-note {
+//     position: absolute;
+//     top: 1.25rem;
+//     right: 1.25rem;
 //   }
 //
 //   .logout-link {
@@ -10181,7 +10210,7 @@ exports = module.exports = __webpack_require__(2)();
 
 
 // module
-exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    width: 100%;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
+exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n  }\n\n  .box {\n    position: relative;\n    width: 100%;\n  }\n\n  .textarea {\n    width: 100%;\n  }\n\n  .new-note {\n    position: absolute;\n    top: 1.25rem;\n    right: 1.25rem;\n  }\n\n  .logout-link {\n    position: absolute;\n    bottom: -5px;\n    right: 0;\n  }\n\n  .content-wrapper {\n    position: relative;\n  }\n\n  @media(min-width: 769px) {\n    .content-wrapper {\n      width: 35%;\n    }\n  }\n", ""]);
 
 // exports
 
@@ -10993,7 +11022,7 @@ module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n
 /* 34 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <input v-model=\"note\" placeholder=\"Add Note\">\n          <button @click=\"addNote\">Add Note</button>\n\n          <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n            <span v-if=\"editingNote['.key'] === note['.key']\">\n              <input v-model=\"editingNote.content\"/>\n              <button @click=\"updateNote(note)\">Save</button>\n            </span>\n\n            <span v-else>\n              {{note.content}}\n              <button @click=\"deleteNote(note)\">X</button>\n            </span>\n\n          </div>\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button class=\"button is-primary\" @click=\"updateNote(note)\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              {{note.content}}\n              <button class=\"button is-danger\" @click=\"deleteNote(note)\">X</button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
 /* 35 */
