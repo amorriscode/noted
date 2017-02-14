@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 56);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -9014,7 +9014,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(0)))
 
 /***/ }),
 /* 5 */
@@ -9023,7 +9023,7 @@ module.exports = Vue$3;
 "use strict";
 
 
-var _firebase = __webpack_require__(25);
+var _firebase = __webpack_require__(40);
 
 var _firebase2 = _interopRequireDefault(_firebase);
 
@@ -9047,6 +9047,13 @@ module.exports = {
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+var core = module.exports = {version: '1.2.6'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9056,7 +9063,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _stringify = __webpack_require__(16);
+var _stringify = __webpack_require__(17);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
@@ -9064,7 +9071,7 @@ var _vue = __webpack_require__(4);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuex = __webpack_require__(40);
+var _vuex = __webpack_require__(55);
 
 var _vuex2 = _interopRequireDefault(_vuex);
 
@@ -9096,7 +9103,7 @@ exports.default = new _vuex2.default.Store({
 });
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -9282,7 +9289,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9296,23 +9303,23 @@ var _vue = __webpack_require__(4);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vueRouter = __webpack_require__(39);
+var _vueRouter = __webpack_require__(54);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _auth = __webpack_require__(11);
+var _auth = __webpack_require__(12);
 
 var _auth2 = _interopRequireDefault(_auth);
 
-var _Login = __webpack_require__(36);
+var _Login = __webpack_require__(51);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _Signup = __webpack_require__(38);
+var _Signup = __webpack_require__(53);
 
 var _Signup2 = _interopRequireDefault(_Signup);
 
-var _Notes = __webpack_require__(37);
+var _Notes = __webpack_require__(52);
 
 var _Notes2 = _interopRequireDefault(_Notes);
 
@@ -9345,13 +9352,13 @@ router.beforeEach(function (to, from, next) {
 exports.default = router;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(29)
-__vue_script__ = __webpack_require__(12)
-__vue_template__ = __webpack_require__(32)
+__webpack_require__(44)
+__vue_script__ = __webpack_require__(13)
+__vue_template__ = __webpack_require__(47)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -9368,7 +9375,7 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -9716,7 +9723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9726,7 +9733,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _store = __webpack_require__(6);
+var _store = __webpack_require__(7);
 
 var _store2 = _interopRequireDefault(_store);
 
@@ -9748,7 +9755,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9771,7 +9778,7 @@ exports.default = {};
 // </style>
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9895,7 +9902,7 @@ exports.default = {
 // <script>
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9904,6 +9911,10 @@ exports.default = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends2 = __webpack_require__(19);
+
+var _extends3 = _interopRequireDefault(_extends2);
 
 var _firebaseApp = __webpack_require__(5);
 
@@ -9935,17 +9946,18 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 //
 //             <div class="control is-grouped">
 //               <p class="control">
-//                 <button class="button is-primary" @click="updateNote(note)">Save</button>
+//                 <button v-if="editingNote.new" class="button is-primary" @click="addNote()">Save</button>
+//                 <button v-else class="button is-primary" @click="updateNote()">Save</button>
 //               </p>
 //               <p class="control">
-//                 <button class="button is-link">Cancel</button>
+//                 <button @click="closeEditor" class="button is-link">Cancel</button>
 //               </p>
 //             </div>
 //           </div>
 //
 //           <div class="notes-list" v-else>
 //             <div v-for="note in notes" v-on:dblclick="editNote(note)">
-//               {{note.content}}
+//               {{note.title}}
 //               <button class="button is-danger" @click="deleteNote(note)">X</button>
 //             </div>
 //           </div><!-- /.notes-list -->
@@ -9964,7 +9976,6 @@ var notesRef = _firebaseApp2.default.db.ref('notes'); // <template>
 exports.default = {
   data: function data() {
     return {
-      note: '',
       editingNote: false
     };
   },
@@ -9982,15 +9993,24 @@ exports.default = {
   },
 
   methods: {
-    newNote: function newNote() {},
-    addNote: function addNote() {
-      var newNote = {
-        content: this.note
+    newNote: function newNote() {
+      this.editingNote = {
+        new: true,
+        title: '',
+        content: ''
       };
+    },
+    addNote: function addNote() {
+      var newNote = (0, _extends3.default)({}, this.editingNote);
       newNote[this.uid] = true;
+
+      // Remove the new key
+      delete newNote.new;
 
       // Push note into database
       notesRef.push(newNote);
+
+      this.closeEditor();
     },
     deleteNote: function deleteNote(note) {
       // Remove note from firebase
@@ -10006,7 +10026,12 @@ exports.default = {
         content: this.editingNote.content,
         title: this.editingNote.title
       });
-      this.editingNote = '';
+
+      this.closeEditor();
+    },
+    closeEditor: function closeEditor() {
+      // Close editor
+      this.editingNote = false;
     }
   }
 };
@@ -10056,7 +10081,7 @@ exports.default = {
 // </style>
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10180,29 +10205,271 @@ exports.default = {
 // <script>
 
 /***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(17), __esModule: true };
-
-/***/ }),
 /* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core = __webpack_require__(18);
+module.exports = { "default": __webpack_require__(20), __esModule: true };
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(21), __esModule: true };
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Object$assign = __webpack_require__(18)["default"];
+
+exports["default"] = _Object$assign || function (target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i];
+
+    for (var key in source) {
+      if (Object.prototype.hasOwnProperty.call(source, key)) {
+        target[key] = source[key];
+      }
+    }
+  }
+
+  return target;
+};
+
+exports.__esModule = true;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(6);
 module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
   return (core.JSON && core.JSON.stringify || JSON.stringify).apply(JSON, arguments);
 };
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports) {
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
 
-var core = module.exports = {version: '1.2.6'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+__webpack_require__(33);
+module.exports = __webpack_require__(6).Object.assign;
 
 /***/ }),
-/* 19 */
+/* 22 */
+/***/ (function(module, exports) {
+
+module.exports = function(it){
+  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function(it){
+  return toString.call(it).slice(8, -1);
+};
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__(22);
+module.exports = function(fn, that, length){
+  aFunction(fn);
+  if(that === undefined)return fn;
+  switch(length){
+    case 1: return function(a){
+      return fn.call(that, a);
+    };
+    case 2: return function(a, b){
+      return fn.call(that, a, b);
+    };
+    case 3: return function(a, b, c){
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function(/* ...args */){
+    return fn.apply(that, arguments);
+  };
+};
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function(it){
+  if(it == undefined)throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var global    = __webpack_require__(28)
+  , core      = __webpack_require__(6)
+  , ctx       = __webpack_require__(24)
+  , PROTOTYPE = 'prototype';
+
+var $export = function(type, name, source){
+  var IS_FORCED = type & $export.F
+    , IS_GLOBAL = type & $export.G
+    , IS_STATIC = type & $export.S
+    , IS_PROTO  = type & $export.P
+    , IS_BIND   = type & $export.B
+    , IS_WRAP   = type & $export.W
+    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
+    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
+    , key, own, out;
+  if(IS_GLOBAL)source = name;
+  for(key in source){
+    // contains in native
+    own = !IS_FORCED && target && key in target;
+    if(own && key in exports)continue;
+    // export native or passed
+    out = own ? target[key] : source[key];
+    // prevent global pollution for namespaces
+    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
+    // bind timers to global for call from export context
+    : IS_BIND && own ? ctx(out, global)
+    // wrap global constructors for prevent change them in library
+    : IS_WRAP && target[key] == out ? (function(C){
+      var F = function(param){
+        return this instanceof C ? new C(param) : C(param);
+      };
+      F[PROTOTYPE] = C[PROTOTYPE];
+      return F;
+    // make static versions for prototype methods
+    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    if(IS_PROTO)(exports[PROTOTYPE] || (exports[PROTOTYPE] = {}))[key] = out;
+  }
+};
+// type bitmap
+$export.F = 1;  // forced
+$export.G = 2;  // global
+$export.S = 4;  // static
+$export.P = 8;  // proto
+$export.B = 16; // bind
+$export.W = 32; // wrap
+module.exports = $export;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports) {
+
+module.exports = function(exec){
+  try {
+    return !!exec();
+  } catch(e){
+    return true;
+  }
+};
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__(23);
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+var $Object = Object;
+module.exports = {
+  create:     $Object.create,
+  getProto:   $Object.getPrototypeOf,
+  isEnum:     {}.propertyIsEnumerable,
+  getDesc:    $Object.getOwnPropertyDescriptor,
+  setDesc:    $Object.defineProperty,
+  setDescs:   $Object.defineProperties,
+  getKeys:    $Object.keys,
+  getNames:   $Object.getOwnPropertyNames,
+  getSymbols: $Object.getOwnPropertySymbols,
+  each:       [].forEach
+};
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.1 Object.assign(target, source, ...)
+var $        = __webpack_require__(30)
+  , toObject = __webpack_require__(32)
+  , IObject  = __webpack_require__(29);
+
+// should work with symbols and should have deterministic property order (V8 bug)
+module.exports = __webpack_require__(27)(function(){
+  var a = Object.assign
+    , A = {}
+    , B = {}
+    , S = Symbol()
+    , K = 'abcdefghijklmnopqrst';
+  A[S] = 7;
+  K.split('').forEach(function(k){ B[k] = k; });
+  return a({}, A)[S] != 7 || Object.keys(a({}, B)).join('') != K;
+}) ? function assign(target, source){ // eslint-disable-line no-unused-vars
+  var T     = toObject(target)
+    , $$    = arguments
+    , $$len = $$.length
+    , index = 1
+    , getKeys    = $.getKeys
+    , getSymbols = $.getSymbols
+    , isEnum     = $.isEnum;
+  while($$len > index){
+    var S      = IObject($$[index++])
+      , keys   = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S)
+      , length = keys.length
+      , j      = 0
+      , key;
+    while(length > j)if(isEnum.call(S, key = keys[j++]))T[key] = S[key];
+  }
+  return T;
+} : Object.assign;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.13 ToObject(argument)
+var defined = __webpack_require__(25);
+module.exports = function(it){
+  return Object(defined(it));
+};
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.3.1 Object.assign(target, source)
+var $export = __webpack_require__(26);
+
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(31)});
+
+/***/ }),
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
@@ -10216,7 +10483,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 
 /***/ }),
-/* 20 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
@@ -10230,7 +10497,7 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 21 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
@@ -10244,7 +10511,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 
 /***/ }),
-/* 22 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)();
@@ -10258,7 +10525,7 @@ exports.push([module.i, "\n  .section {\n    width: 100%;\n  }\n\n  .container {
 
 
 /***/ }),
-/* 23 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -10506,7 +10773,7 @@ module.exports = firebase.auth;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 24 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -10777,7 +11044,7 @@ module.exports = firebase.database;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 25 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -10788,15 +11055,15 @@ module.exports = firebase.database;
  *   firebase = require('firebase');
  */
 var firebase = __webpack_require__(1);
-__webpack_require__(23);
-__webpack_require__(24);
-__webpack_require__(27);
-__webpack_require__(26);
+__webpack_require__(38);
+__webpack_require__(39);
+__webpack_require__(42);
+__webpack_require__(41);
 module.exports = firebase;
 
 
 /***/ }),
-/* 26 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -10842,7 +11109,7 @@ module.exports = firebase.messaging;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 27 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(1);
@@ -10903,13 +11170,13 @@ module.exports = firebase.storage;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 28 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(34);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(3)(content, {});
@@ -10929,13 +11196,13 @@ if(false) {
 }
 
 /***/ }),
-/* 29 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(35);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(3)(content, {});
@@ -10955,13 +11222,13 @@ if(false) {
 }
 
 /***/ }),
-/* 30 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(36);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(3)(content, {});
@@ -10981,13 +11248,13 @@ if(false) {
 }
 
 /***/ }),
-/* 31 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(37);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
 var update = __webpack_require__(3)(content, {});
@@ -11007,37 +11274,37 @@ if(false) {
 }
 
 /***/ }),
-/* 32 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div id=\"app\">\n    <router-view></router-view>\n  </div>\n";
 
 /***/ }),
-/* 33 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Login</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"login\" class=\"button is-success\">\n              Login\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"signup-link\"><router-link to=\"/signup\">Need to create an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 34 */
+/* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button class=\"button is-primary\" @click=\"updateNote(note)\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              {{note.content}}\n              <button class=\"button is-danger\" @click=\"deleteNote(note)\">X</button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
+module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Notes</h3>\n\n          <a class=\"new-note\" @click=\"newNote\"><i class=\"fa fa-plus fa-2x\" aria-hidden=\"true\"></i></a>\n\n          <div class=\"note-editor\" v-if=\"editingNote\">\n            <div class=\"control\">\n              <label class=\"label\">Title</label>\n              <input class=\"input\" v-model=\"editingNote.title\" />\n            </div>\n\n            <div class=\"control\">\n              <label class=\"label\">Note</label>\n              <textarea class=\"textarea\" v-model=\"editingNote.content\"></textarea>\n            </div>\n\n            <div class=\"control is-grouped\">\n              <p class=\"control\">\n                <button v-if=\"editingNote.new\" class=\"button is-primary\" @click=\"addNote()\">Save</button>\n                <button v-else class=\"button is-primary\" @click=\"updateNote()\">Save</button>\n              </p>\n              <p class=\"control\">\n                <button @click=\"closeEditor\" class=\"button is-link\">Cancel</button>\n              </p>\n            </div>\n          </div>\n\n          <div class=\"notes-list\" v-else>\n            <div v-for=\"note in notes\" v-on:dblclick=\"editNote(note)\">\n              {{note.title}}\n              <button class=\"button is-danger\" @click=\"deleteNote(note)\">X</button>\n            </div>\n          </div><!-- /.notes-list -->\n\n        </div><!-- /.box -->\n\n        <a class=\"logout-link\"><router-link to=\"/logout\">Logout</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 35 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = "\n  <div class=\"section\">\n    <div class=\"container\">\n\n      <div class=\"content-wrapper\">\n\n        <div class=\"box\">\n          <h3 class=\"title\">Signup</h3>\n\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.email\" class=\"input\" type=\"email\" placeholder=\"Email\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-envelope\"></i>\n            </span>\n          </p>\n          <p class=\"control has-icon\">\n            <input v-model=\"credentials.password\" class=\"input\" type=\"password\" placeholder=\"Password\">\n            <span class=\"icon is-small\">\n              <i class=\"fa fa-lock\"></i>\n            </span>\n          </p>\n          <p class=\"control\">\n            <button @click=\"signup\" class=\"button is-success\">\n              Signup\n            </button>\n\n          </p>\n\n        </div><!-- /.box -->\n\n        <a class=\"login-link\"><router-link to=\"/login\">Already have an account?</router-link></a>\n\n      </div><!-- /.content-wrapper -->\n\n    </div><!-- /.container -->\n  </div><!-- /.section -->\n";
 
 /***/ }),
-/* 36 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(30)
-__vue_script__ = __webpack_require__(13)
-__vue_template__ = __webpack_require__(33)
+__webpack_require__(45)
+__vue_script__ = __webpack_require__(14)
+__vue_template__ = __webpack_require__(48)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11054,13 +11321,13 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 37 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(28)
-__vue_script__ = __webpack_require__(14)
-__vue_template__ = __webpack_require__(34)
+__webpack_require__(43)
+__vue_script__ = __webpack_require__(15)
+__vue_template__ = __webpack_require__(49)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11077,13 +11344,13 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 38 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_script__, __vue_template__
-__webpack_require__(31)
-__vue_script__ = __webpack_require__(15)
-__vue_template__ = __webpack_require__(35)
+__webpack_require__(46)
+__vue_script__ = __webpack_require__(16)
+__vue_template__ = __webpack_require__(50)
 module.exports = __vue_script__ || {}
 if (module.exports.__esModule) module.exports = module.exports.default
 if (__vue_template__) { (typeof module.exports === "function" ? module.exports.options : module.exports).template = __vue_template__ }
@@ -11100,7 +11367,7 @@ if (false) {(function () {  module.hot.accept()
 })()}
 
 /***/ }),
-/* 39 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13384,10 +13651,10 @@ if (inBrowser && window.Vue) {
 
 module.exports = VueRouter;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
-/* 40 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -14198,7 +14465,7 @@ return index;
 
 
 /***/ }),
-/* 41 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14208,19 +14475,19 @@ var _vue = __webpack_require__(4);
 
 var _vue2 = _interopRequireDefault(_vue);
 
-var _vuefire = __webpack_require__(10);
+var _vuefire = __webpack_require__(11);
 
 var _vuefire2 = _interopRequireDefault(_vuefire);
 
-var _App = __webpack_require__(9);
+var _App = __webpack_require__(10);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _store = __webpack_require__(6);
+var _store = __webpack_require__(7);
 
 var _store2 = _interopRequireDefault(_store);
 
-var _router = __webpack_require__(8);
+var _router = __webpack_require__(9);
 
 var _router2 = _interopRequireDefault(_router);
 

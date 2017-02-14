@@ -22,10 +22,11 @@
 
             <div class="control is-grouped">
               <p class="control">
-                <button class="button is-primary" @click="updateNote(note)">Save</button>
+                <button v-if="editingNote.new" class="button is-primary" @click="addNote()">Save</button>
+                <button v-else class="button is-primary" @click="updateNote()">Save</button>
               </p>
               <p class="control">
-                <button class="button is-link">Cancel</button>
+                <button @click="closeEditor" class="button is-link">Cancel</button>
               </p>
             </div>
           </div>
@@ -55,8 +56,7 @@
   export default {
     data () {
       return {
-        note: '',
-        editingNote: false,
+        editingNote: false
       }
     },
     computed: {
@@ -72,16 +72,23 @@
     },
     methods: {
       newNote() {
-
+        this.editingNote = {
+          new: true,
+          title: '',
+          content: ''
+        }
       },
       addNote() {
-        const newNote = {
-          content: this.note
-        };
+        const newNote = {...this.editingNote};
         newNote[this.uid] = true;
+
+        // Remove the new key
+        delete newNote.new;
 
         // Push note into database
         notesRef.push(newNote);
+
+        this.closeEditor();
       },
       deleteNote(note) {
         // Remove note from firebase
@@ -97,7 +104,12 @@
           content: this.editingNote.content,
           title: this.editingNote.title
         });
-        this.editingNote = '';
+
+        this.closeEditor();
+      },
+      closeEditor() {
+        // Close editor
+        this.editingNote = false;
       }
     }
   }
