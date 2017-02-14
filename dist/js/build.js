@@ -24752,9 +24752,10 @@ exports.default = {
       };
     },
     addNote: function addNote() {
-      var newNote = (0, _extends3.default)({}, this.editingNote);
-      newNote[this.uid] = true;
-      newNote.dateCreated = (0, _moment2.default)().toString();
+      var newNote = (0, _extends3.default)({}, this.editingNote, {
+        owner: this.uid,
+        dateCreated: (0, _moment2.default)().toString()
+      });
 
       // Remove the 'new' key
       delete newNote.new;
@@ -24882,7 +24883,7 @@ exports.default = {
   firebase: function firebase() {
     var userId = this.uid;
     return {
-      notes: _firebaseApp2.default.db.ref('notes').orderByChild(userId).equalTo(true)
+      notes: _firebaseApp2.default.db.ref('notes').orderByChild('owner').equalTo(userId)
     };
   },
 
@@ -24893,7 +24894,7 @@ exports.default = {
     },
     safeTitle: function safeTitle(note) {
       if (note.title) {
-        return note.title.length > 35 ? note.title.substr(1, 35) + '...' : notel.title;
+        return note.title.length > 35 ? note.title.substr(1, 35) + '...' : note.title;
       } else {
         return 'Untitled';
       }

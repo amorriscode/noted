@@ -57,7 +57,7 @@
     firebase() {
       const userId = this.uid;
       return {
-        notes: firebaseApp.db.ref('notes').orderByChild(userId).equalTo(true)
+        notes: firebaseApp.db.ref('notes').orderByChild('owner').equalTo(userId)
       }
     },
     methods: {
@@ -67,7 +67,7 @@
       },
       safeTitle(note) {
         if (note.title) {
-          return (note.title.length > 35) ? `${note.title.substr(1, 35)}...` : notel.title;
+          return (note.title.length > 35) ? `${note.title.substr(1, 35)}...` : note.title;
         } else {
           return 'Untitled';
         }

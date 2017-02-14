@@ -55,9 +55,11 @@
         }
       },
       addNote() {
-        const newNote = {...this.editingNote};
-        newNote[this.uid] = true;
-        newNote.dateCreated = moment().toString();
+        const newNote = {
+          ...this.editingNote,
+          owner: this.uid,
+          dateCreated: moment().toString()
+        };
 
         // Remove the 'new' key
         delete newNote.new;
