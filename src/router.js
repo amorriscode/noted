@@ -12,7 +12,8 @@ import Notes from './components/notes/Notes.vue';
 const routes = [
   { path: '/login', component: Login },
   { path: '/signup', component: Signup },
-  { path: '/notes', component: Notes }
+  { path: '/notes', component: Notes },
+  { path: '*', redirect: '/notes' }
 ]
 
 const router = new VueRouter({

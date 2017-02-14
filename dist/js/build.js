@@ -23977,7 +23977,7 @@ _vue2.default.use(_vueRouter2.default);
 // Setup routes
 
 
-var routes = [{ path: '/login', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }];
+var routes = [{ path: '/login', component: _Login2.default }, { path: '/signup', component: _Signup2.default }, { path: '/notes', component: _Notes2.default }, { path: '*', redirect: '/notes' }];
 
 var router = new _vueRouter2.default({
   routes: routes
@@ -24459,9 +24459,7 @@ exports.default = {
     var _this = this;
 
     window.addEventListener('keyup', function (e) {
-      console.log(e);
       if (e.key === 'Enter') {
-        console.log('FUU');
         _this.login();
       }
     });
@@ -24589,6 +24587,15 @@ exports.default = {
         password: ''
       }
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    window.addEventListener('keyup', function (e) {
+      if (e.key === 'Enter') {
+        _this.signup();
+      }
+    });
   },
 
   methods: {
