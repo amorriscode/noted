@@ -50,7 +50,6 @@
     },
     created() {
       window.addEventListener('keyup', (e) => {
-        console.log(e);
         if (e.key === 'Enter') {
           this.login();
         }
